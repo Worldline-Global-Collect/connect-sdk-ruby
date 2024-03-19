@@ -1,0 +1,28 @@
+#
+# This class was auto-generated from the API references found at
+# https://apireference.connect.worldline-solutions.com/
+#
+require 'worldline/connect/sdk/factory'
+
+
+def example
+  get_client do |client|
+    client.v1.merchant('merchantId').files.get_file('fileId') do |headers, response_body|
+        # Use the headers and response body
+        # For instance:
+        while chunk = response_body.read(8192)
+          # do something with the chunk
+        end
+    end
+  end
+end
+
+def get_client
+  api_key_id = ENV.fetch('connect.api.apiKeyId', 'someKey')
+  secret_api_key = ENV.fetch('connect.api.secretApiKey', 'someSecret')
+  configuration_file_name = File.join(__FILE__, '..', '..', '..', 'example_configuration.yml')
+  yield client = Worldline::Connect::SDK::Factory.create_client_from_file(configuration_file_name, api_key_id, secret_api_key)
+ensure
+  # Free networking resources when done
+  client.close unless client.nil?
+end

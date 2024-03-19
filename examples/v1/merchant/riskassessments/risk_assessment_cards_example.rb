@@ -1,0 +1,113 @@
+#
+# This class was auto-generated from the API references found at
+# https://apireference.connect.worldline-solutions.com/
+#
+require 'worldline/connect/sdk/factory'
+require 'worldline/connect/sdk/v1/domain/additional_order_input_airline_data'
+require 'worldline/connect/sdk/v1/domain/address'
+require 'worldline/connect/sdk/v1/domain/airline_data'
+require 'worldline/connect/sdk/v1/domain/airline_flight_leg'
+require 'worldline/connect/sdk/v1/domain/amount_of_money'
+require 'worldline/connect/sdk/v1/domain/card'
+require 'worldline/connect/sdk/v1/domain/customer_risk_assessment'
+require 'worldline/connect/sdk/v1/domain/order_risk_assessment'
+require 'worldline/connect/sdk/v1/domain/risk_assessment_card'
+
+Domain = Worldline::Connect::SDK::V1::Domain
+
+def example
+  get_client do |client|
+    card = Domain::Card.new
+    card.card_number = '4567350000427977'
+    card.cvv = '123'
+    card.expiry_date = '1299'
+
+    flight_legs = []
+
+    flight_leg1 = Domain::AirlineFlightLeg.new
+    flight_leg1.airline_class = '1'
+    flight_leg1.arrival_airport = 'AMS'
+    flight_leg1.carrier_code = 'KL'
+    flight_leg1.date = '20150102'
+    flight_leg1.departure_time = '17:59'
+    flight_leg1.fare = 'fare'
+    flight_leg1.fare_basis = 'INTERNET'
+    flight_leg1.flight_number = '791'
+    flight_leg1.number = 1
+    flight_leg1.origin_airport = 'BCN'
+    flight_leg1.stopover_code = 'non-permitted'
+
+    flight_legs << flight_leg1
+
+    flight_leg2 = Domain::AirlineFlightLeg.new
+    flight_leg2.airline_class = '1'
+    flight_leg2.arrival_airport = 'BCN'
+    flight_leg2.carrier_code = 'KL'
+    flight_leg2.date = '20150102'
+    flight_leg2.departure_time = '23:59'
+    flight_leg2.fare = 'fare'
+    flight_leg2.fare_basis = 'INTERNET'
+    flight_leg2.flight_number = '792'
+    flight_leg2.number = 2
+    flight_leg2.origin_airport = 'AMS'
+    flight_leg2.stopover_code = 'non-permitted'
+
+    flight_legs << flight_leg2
+
+    airline_data = Domain::AirlineData.new
+    airline_data.agent_numeric_code = '123321'
+    airline_data.code = '123'
+    airline_data.flight_date = '20150102'
+    airline_data.flight_legs = flight_legs
+    airline_data.invoice_number = '123456'
+    airline_data.is_e_ticket = true
+    airline_data.is_restricted_ticket = true
+    airline_data.is_third_party = true
+    airline_data.issue_date = '20150101'
+    airline_data.merchant_customer_id = '14'
+    airline_data.name = 'Air France KLM'
+    airline_data.passenger_name = 'WECOYOTE'
+    airline_data.place_of_issue = 'Utah'
+    airline_data.pnr = '4JTGKT'
+    airline_data.point_of_sale = 'IATA point of sale name'
+    airline_data.pos_city_code = 'AMS'
+    airline_data.ticket_delivery_method = 'e-ticket'
+    airline_data.ticket_number = 'KLM20050000'
+
+    additional_input = Domain::AdditionalOrderInputAirlineData.new
+    additional_input.airline_data = airline_data
+
+    amount_of_money = Domain::AmountOfMoney.new
+    amount_of_money.amount = 100
+    amount_of_money.currency_code = 'EUR'
+
+    billing_address = Domain::Address.new
+    billing_address.country_code = 'US'
+
+    customer = Domain::CustomerRiskAssessment.new
+    customer.account_type = 'existing'
+    customer.billing_address = billing_address
+    customer.locale = 'en_US'
+
+    order = Domain::OrderRiskAssessment.new
+    order.additional_input = additional_input
+    order.amount_of_money = amount_of_money
+    order.customer = customer
+
+    body = Domain::RiskAssessmentCard.new
+    body.card = card
+    body.order = order
+
+    response = client.v1.merchant('merchantId').riskassessments.cards(body)
+  end
+end
+
+def get_client
+  api_key_id = ENV.fetch('connect.api.apiKeyId', 'someKey')
+  secret_api_key = ENV.fetch('connect.api.secretApiKey', 'someSecret')
+  configuration_file_name = File.join(__FILE__, '..', '..', '..', 'example_configuration.yml')
+  yield client = Worldline::Connect::SDK::Factory.create_client_from_file(configuration_file_name, api_key_id, secret_api_key)
+ensure
+  # Free networking resources when done
+  client.close unless client.nil?
+end

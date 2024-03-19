@@ -1,0 +1,96 @@
+#
+# This class was auto-generated from the API references found at
+# https://apireference.connect.worldline-solutions.com/
+#
+require 'worldline/connect/sdk/v1/domain/order_output'
+require 'worldline/connect/sdk/v1/domain/refund_bank_method_specific_output'
+require 'worldline/connect/sdk/v1/domain/refund_card_method_specific_output'
+require 'worldline/connect/sdk/v1/domain/refund_cash_method_specific_output'
+require 'worldline/connect/sdk/v1/domain/refund_e_invoice_method_specific_output'
+require 'worldline/connect/sdk/v1/domain/refund_e_wallet_method_specific_output'
+require 'worldline/connect/sdk/v1/domain/refund_mobile_method_specific_output'
+
+module Worldline
+  module Connect
+    module SDK
+      module V1
+        module Domain
+          # @attr [Integer] amount_paid
+          # @attr [Worldline::Connect::SDK::V1::Domain::RefundBankMethodSpecificOutput] bank_refund_method_specific_output
+          # @attr [Worldline::Connect::SDK::V1::Domain::RefundCardMethodSpecificOutput] card_refund_method_specific_output
+          # @attr [Worldline::Connect::SDK::V1::Domain::RefundCashMethodSpecificOutput] cash_refund_method_specific_output
+          # @attr [Worldline::Connect::SDK::V1::Domain::RefundEInvoiceMethodSpecificOutput] e_invoice_refund_method_specific_output
+          # @attr [Worldline::Connect::SDK::V1::Domain::RefundEWalletMethodSpecificOutput] e_wallet_refund_method_specific_output
+          # @attr [Worldline::Connect::SDK::V1::Domain::RefundMobileMethodSpecificOutput] mobile_refund_method_specific_output
+          # @attr [String] payment_method
+          class RefundOutput < Worldline::Connect::SDK::V1::Domain::OrderOutput
+
+            attr_accessor :amount_paid
+
+            attr_accessor :bank_refund_method_specific_output
+
+            attr_accessor :card_refund_method_specific_output
+
+            attr_accessor :cash_refund_method_specific_output
+
+            attr_accessor :e_invoice_refund_method_specific_output
+
+            attr_accessor :e_wallet_refund_method_specific_output
+
+            attr_accessor :mobile_refund_method_specific_output
+
+            attr_accessor :payment_method
+
+            # @return (Hash)
+            def to_h
+              hash = super
+              hash['amountPaid'] = @amount_paid unless @amount_paid.nil?
+              hash['bankRefundMethodSpecificOutput'] = @bank_refund_method_specific_output.to_h unless @bank_refund_method_specific_output.nil?
+              hash['cardRefundMethodSpecificOutput'] = @card_refund_method_specific_output.to_h unless @card_refund_method_specific_output.nil?
+              hash['cashRefundMethodSpecificOutput'] = @cash_refund_method_specific_output.to_h unless @cash_refund_method_specific_output.nil?
+              hash['eInvoiceRefundMethodSpecificOutput'] = @e_invoice_refund_method_specific_output.to_h unless @e_invoice_refund_method_specific_output.nil?
+              hash['eWalletRefundMethodSpecificOutput'] = @e_wallet_refund_method_specific_output.to_h unless @e_wallet_refund_method_specific_output.nil?
+              hash['mobileRefundMethodSpecificOutput'] = @mobile_refund_method_specific_output.to_h unless @mobile_refund_method_specific_output.nil?
+              hash['paymentMethod'] = @payment_method unless @payment_method.nil?
+              hash
+            end
+
+            def from_hash(hash)
+              super
+              if hash.has_key? 'amountPaid'
+                @amount_paid = hash['amountPaid']
+              end
+              if hash.has_key? 'bankRefundMethodSpecificOutput'
+                raise TypeError, "value '%s' is not a Hash" % [hash['bankRefundMethodSpecificOutput']] unless hash['bankRefundMethodSpecificOutput'].is_a? Hash
+                @bank_refund_method_specific_output = Worldline::Connect::SDK::V1::Domain::RefundBankMethodSpecificOutput.new_from_hash(hash['bankRefundMethodSpecificOutput'])
+              end
+              if hash.has_key? 'cardRefundMethodSpecificOutput'
+                raise TypeError, "value '%s' is not a Hash" % [hash['cardRefundMethodSpecificOutput']] unless hash['cardRefundMethodSpecificOutput'].is_a? Hash
+                @card_refund_method_specific_output = Worldline::Connect::SDK::V1::Domain::RefundCardMethodSpecificOutput.new_from_hash(hash['cardRefundMethodSpecificOutput'])
+              end
+              if hash.has_key? 'cashRefundMethodSpecificOutput'
+                raise TypeError, "value '%s' is not a Hash" % [hash['cashRefundMethodSpecificOutput']] unless hash['cashRefundMethodSpecificOutput'].is_a? Hash
+                @cash_refund_method_specific_output = Worldline::Connect::SDK::V1::Domain::RefundCashMethodSpecificOutput.new_from_hash(hash['cashRefundMethodSpecificOutput'])
+              end
+              if hash.has_key? 'eInvoiceRefundMethodSpecificOutput'
+                raise TypeError, "value '%s' is not a Hash" % [hash['eInvoiceRefundMethodSpecificOutput']] unless hash['eInvoiceRefundMethodSpecificOutput'].is_a? Hash
+                @e_invoice_refund_method_specific_output = Worldline::Connect::SDK::V1::Domain::RefundEInvoiceMethodSpecificOutput.new_from_hash(hash['eInvoiceRefundMethodSpecificOutput'])
+              end
+              if hash.has_key? 'eWalletRefundMethodSpecificOutput'
+                raise TypeError, "value '%s' is not a Hash" % [hash['eWalletRefundMethodSpecificOutput']] unless hash['eWalletRefundMethodSpecificOutput'].is_a? Hash
+                @e_wallet_refund_method_specific_output = Worldline::Connect::SDK::V1::Domain::RefundEWalletMethodSpecificOutput.new_from_hash(hash['eWalletRefundMethodSpecificOutput'])
+              end
+              if hash.has_key? 'mobileRefundMethodSpecificOutput'
+                raise TypeError, "value '%s' is not a Hash" % [hash['mobileRefundMethodSpecificOutput']] unless hash['mobileRefundMethodSpecificOutput'].is_a? Hash
+                @mobile_refund_method_specific_output = Worldline::Connect::SDK::V1::Domain::RefundMobileMethodSpecificOutput.new_from_hash(hash['mobileRefundMethodSpecificOutput'])
+              end
+              if hash.has_key? 'paymentMethod'
+                @payment_method = hash['paymentMethod']
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
