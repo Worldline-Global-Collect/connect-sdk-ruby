@@ -12,7 +12,6 @@ module Worldline
           # @attr [String] mandate_reference
           class AbstractSepaDirectDebitPaymentProduct771SpecificInput < Worldline::Connect::SDK::Domain::DataObject
 
-            #
             # @deprecated Use existingUniqueMandateReference or mandate.uniqueMandateReference instead
             attr_accessor :mandate_reference
 

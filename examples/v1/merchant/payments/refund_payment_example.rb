@@ -59,7 +59,7 @@ def example
     rescue Worldline::Connect::SDK::V1::DeclinedRefundException => e
       handle_declined_refund(e.refund_result)
     rescue Worldline::Connect::SDK::V1::ApiException => e
-      handle_api_errors(e.errors)
+      handle_error_response(e.error_id, e.errors)
     end
   end
 end
@@ -78,6 +78,6 @@ def handle_declined_refund(refund_result)
   # handle the result here
 end
 
-def handle_api_errors(errors)
-  # handle the errors here
+def handle_error_response(error_id, errors)
+  # handle the error response here
 end

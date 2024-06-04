@@ -17,23 +17,18 @@ module Worldline
           # @deprecated No replacement
           class LoanRecipient < Worldline::Connect::SDK::Domain::DataObject
 
-            #
             # @deprecated No replacement
             attr_accessor :account_number
 
-            #
             # @deprecated No replacement
             attr_accessor :date_of_birth
 
-            #
             # @deprecated No replacement
             attr_accessor :partial_pan
 
-            #
             # @deprecated No replacement
             attr_accessor :surname
 
-            #
             # @deprecated No replacement
             attr_accessor :zip
 

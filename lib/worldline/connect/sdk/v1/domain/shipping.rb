@@ -16,6 +16,7 @@ module Worldline
           # @attr [String] email_address
           # @attr [String] first_usage_date
           # @attr [true/false] is_first_usage
+          # @attr [String] shipped_from_zip
           # @attr [String] tracking_number
           # @attr [String] type
           class Shipping < Worldline::Connect::SDK::Domain::DataObject
@@ -32,6 +33,8 @@ module Worldline
 
             attr_accessor :is_first_usage
 
+            attr_accessor :shipped_from_zip
+
             attr_accessor :tracking_number
 
             attr_accessor :type
@@ -45,6 +48,7 @@ module Worldline
               hash['emailAddress'] = @email_address unless @email_address.nil?
               hash['firstUsageDate'] = @first_usage_date unless @first_usage_date.nil?
               hash['isFirstUsage'] = @is_first_usage unless @is_first_usage.nil?
+              hash['shippedFromZip'] = @shipped_from_zip unless @shipped_from_zip.nil?
               hash['trackingNumber'] = @tracking_number unless @tracking_number.nil?
               hash['type'] = @type unless @type.nil?
               hash
@@ -70,6 +74,9 @@ module Worldline
               end
               if hash.has_key? 'isFirstUsage'
                 @is_first_usage = hash['isFirstUsage']
+              end
+              if hash.has_key? 'shippedFromZip'
+                @shipped_from_zip = hash['shippedFromZip']
               end
               if hash.has_key? 'trackingNumber'
                 @tracking_number = hash['trackingNumber']

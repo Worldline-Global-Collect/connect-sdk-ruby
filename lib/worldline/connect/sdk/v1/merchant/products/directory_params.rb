@@ -12,6 +12,7 @@ module Worldline
         module Merchant
           module Products
             # Query parameters for {https://apireference.connect.worldline-solutions.com/s2sapi/v1/en_US/ruby/products/directory.html Get payment product directory}
+            #
             # @attr [String] country_code
             # @attr [String] currency_code
             class DirectoryParams < Worldline::Connect::SDK::Communication::ParamRequest

@@ -23,7 +23,6 @@ module Worldline
 
             attr_accessor :invoice_data
 
-            #
             # @deprecated Use orderLineDetails instead
             attr_accessor :level3_interchange_information
 

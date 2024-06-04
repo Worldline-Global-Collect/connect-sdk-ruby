@@ -2,13 +2,13 @@
 # This class was auto-generated from the API references found at
 # https://apireference.connect.worldline-solutions.com/
 #
-require 'worldline/connect/sdk/v1/api_exception'
+require_relative 'api_exception'
 
 module Worldline
   module Connect
     module SDK
       module V1
-        # Indicates that a transaction is declined by the Worldline Global Collect platform or one of its downstream partners/acquirers.
+        # Represents an error response from a create payment, payout or refund call.
         class DeclinedTransactionException < ApiException
 
           # Create a new DeclinedTransactionException.

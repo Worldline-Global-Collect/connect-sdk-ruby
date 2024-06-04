@@ -12,6 +12,7 @@ module Worldline
         module Merchant
           module Products
             # Query parameters for {https://apireference.connect.worldline-solutions.com/s2sapi/v1/en_US/ruby/products/networks.html Get payment product networks}
+            #
             # @attr [String] country_code
             # @attr [String] currency_code
             # @attr [Integer] amount

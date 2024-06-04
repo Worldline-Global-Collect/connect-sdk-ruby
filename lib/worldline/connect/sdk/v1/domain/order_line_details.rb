@@ -12,6 +12,7 @@ module Worldline
           # @attr [Integer] discount_amount
           # @attr [Integer] google_product_category_id
           # @attr [Integer] line_amount_total
+          # @attr [String] naics_commodity_code
           # @attr [String] product_category
           # @attr [String] product_code
           # @attr [String] product_name
@@ -28,6 +29,8 @@ module Worldline
             attr_accessor :google_product_category_id
 
             attr_accessor :line_amount_total
+
+            attr_accessor :naics_commodity_code
 
             attr_accessor :product_category
 
@@ -53,6 +56,7 @@ module Worldline
               hash['discountAmount'] = @discount_amount unless @discount_amount.nil?
               hash['googleProductCategoryId'] = @google_product_category_id unless @google_product_category_id.nil?
               hash['lineAmountTotal'] = @line_amount_total unless @line_amount_total.nil?
+              hash['naicsCommodityCode'] = @naics_commodity_code unless @naics_commodity_code.nil?
               hash['productCategory'] = @product_category unless @product_category.nil?
               hash['productCode'] = @product_code unless @product_code.nil?
               hash['productName'] = @product_name unless @product_name.nil?
@@ -75,6 +79,9 @@ module Worldline
               end
               if hash.has_key? 'lineAmountTotal'
                 @line_amount_total = hash['lineAmountTotal']
+              end
+              if hash.has_key? 'naicsCommodityCode'
+                @naics_commodity_code = hash['naicsCommodityCode']
               end
               if hash.has_key? 'productCategory'
                 @product_category = hash['productCategory']

@@ -38,7 +38,6 @@ module Worldline
 
             attr_accessor :three_d_secure_version
 
-            #
             # @deprecated No replacement
             attr_accessor :three_d_server_transaction_id
 

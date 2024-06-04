@@ -23,18 +23,19 @@ module Worldline
               end
 
               # Resource /!{merchantId}/files/!{fileId} - {https://apireference.connect.worldline-solutions.com/fileserviceapi/v1/en_US/ruby/files/getFile.html Retrieve File}
+              #
               # @param file_id [String]
               # @param context [Worldline::Connect::SDK::CallContext, nil]
               # @yield [Array<Worldline::Connect::SDK::Communication::ResponseHeader>, IO] The response headers and body.
+              # @raise [Worldline::Connect::SDK::V1::IdempotenceException] if an idempotent request caused a conflict (HTTP status code 409)
               # @raise [Worldline::Connect::SDK::V1::ValidationException] if the request was not correct and couldn't be processed (HTTP status code 400)
               # @raise [Worldline::Connect::SDK::V1::AuthorizationException] if the request was not allowed (HTTP status code 403)
-              # @raise [Worldline::Connect::SDK::V1::IdempotenceException] if an idempotent request caused a conflict (HTTP status code 409)
               # @raise [Worldline::Connect::SDK::V1::ReferenceException] if an object was attempted to be referenced that doesn't exist or has been removed,
               #        or there was a conflict (HTTP status code 404, 409 or 410)
               # @raise [Worldline::Connect::SDK::V1::PlatformException] if something went wrong at the Worldline Global Collect platform,
               #        the Worldline Global Collect platform was unable to process a message from a downstream partner/acquirer,
               #        or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
-              # @raise [Worldline::Connect::SDK::V1::ApiException]if the Worldline Global Collect platform returned any other error
+              # @raise [Worldline::Connect::SDK::V1::ApiException] if the Worldline Global Collect platform returned any other error
               def get_file(file_id, context = nil)
                 path_context = {
                   'fileId'.freeze => file_id,

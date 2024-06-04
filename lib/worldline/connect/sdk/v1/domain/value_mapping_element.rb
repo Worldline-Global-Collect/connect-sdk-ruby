@@ -17,7 +17,6 @@ module Worldline
 
             attr_accessor :display_elements
 
-            #
             # @deprecated Use displayElements instead with ID 'displayName'
             attr_accessor :display_name
 

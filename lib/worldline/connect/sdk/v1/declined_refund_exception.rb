@@ -2,48 +2,37 @@
 # This class was auto-generated from the API references found at
 # https://apireference.connect.worldline-solutions.com/
 #
-require 'worldline/connect/sdk/v1/declined_transaction_exception'
+require_relative 'declined_transaction_exception'
 
 module Worldline
   module Connect
     module SDK
       module V1
-        # Indicates that a refund is declined by the Worldline Global Collect platform or one of its downstream partners/acquirers.
+        # Represents an error response from a refund call.
         class DeclinedRefundException < DeclinedTransactionException
 
           # Create a new DeclinedRefundException.
           # @see ApiException#initialize
-          def initialize(status_code, response_body, errors)
-            if errors.nil?
-              super(status_code, response_body, nil, nil, build_message(errors))
-            else
-              super(status_code, response_body, errors.error_id, errors.errors, build_message(errors))
-            end
-            @errors = errors
+          def initialize(status_code, response_body, response)
+            super(status_code, response_body, response&.error_id, response&.errors, build_message(response))
+            @response = response
           end
 
-          # The declined refund result as returned by the Worldline Global Collect platform.
-          # @return [Worldline::Connect::SDK::V1::Domain::RefundResult]
+          # The result of creating a refund
+          # @return [Worldline::Connect::SDK::V1::Domain::RefundResult, nil]
           def refund_result
-            if @errors.nil?
-              nil
-            else
-              @errors.refund_result
-            end
+            @response&.refund_result
           end
 
           private
 
-          def build_message(errors)
-            if !errors.nil?
-              refund = errors.refund_result
-            else
-              refund = nil
-            end
-            if refund.nil?
+          # @param response [Worldline::Connect::SDK::V1::Domain::RefundErrorResponse, nil]
+          def build_message(response)
+            refund_result = response&.refund_result
+            if refund_result.nil?
               'the Worldline Global Collect platform returned a declined refund response'
             else
-              "declined refund '" + refund.id + "' with status '" + refund.status + "'"
+              "declined refund '#{refund_result.id}' with status '#{refund_result.status}'"
             end
           end
         end

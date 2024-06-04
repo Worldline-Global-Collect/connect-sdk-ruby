@@ -12,6 +12,7 @@ module Worldline
         module Merchant
           module Payouts
             # Query parameters for {https://apireference.connect.worldline-solutions.com/s2sapi/v1/en_US/ruby/payouts/find.html Find payouts}
+            #
             # @attr [String] merchant_reference
             # @attr [Integer] merchant_order_id
             # @attr [Integer] offset

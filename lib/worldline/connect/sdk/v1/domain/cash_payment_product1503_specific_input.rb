@@ -13,7 +13,6 @@ module Worldline
           # @deprecated No replacement
           class CashPaymentProduct1503SpecificInput < Worldline::Connect::SDK::Domain::DataObject
 
-            #
             # @deprecated No replacement, since Boleto Bancario no longer needs a return URL
             attr_accessor :return_url
 

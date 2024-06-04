@@ -21,6 +21,7 @@ module Worldline
           end
 
           # Resource /!{merchantId}
+          #
           # @param merchant_id [String]
           # @return [Worldline::Connect::SDK::V1::Merchant::MerchantClient]
           def merchant(merchant_id)

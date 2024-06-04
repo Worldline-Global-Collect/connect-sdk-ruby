@@ -24,7 +24,6 @@ module Worldline
 
             attr_accessor :payment
 
-            #
             # @deprecated Use cardPaymentMethodSpecificOutput instead
             attr_accessor :payment_method_specific_output
 

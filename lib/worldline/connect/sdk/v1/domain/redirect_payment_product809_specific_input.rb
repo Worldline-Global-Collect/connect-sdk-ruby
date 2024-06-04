@@ -13,7 +13,6 @@ module Worldline
           # @attr [String] issuer_id
           class RedirectPaymentProduct809SpecificInput < Worldline::Connect::SDK::Domain::DataObject
 
-            #
             # @deprecated Use RedirectPaymentMethodSpecificInput.expirationPeriod instead
             attr_accessor :expiration_period
 

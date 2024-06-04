@@ -19,7 +19,6 @@ module Worldline
 
             attr_accessor :merchant_customer_id
 
-            #
             # @deprecated Use companyInformation.vatNumber instead
             attr_accessor :vat_number
 

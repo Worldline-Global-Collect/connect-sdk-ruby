@@ -24,7 +24,6 @@ module Worldline
 
             attr_accessor :card
 
-            #
             # @deprecated Use threeDSecure.externalCardholderAuthenticationData instead
             attr_accessor :external_cardholder_authentication_data
 
@@ -34,7 +33,6 @@ module Worldline
 
             attr_accessor :network_token_data
 
-            #
             # @deprecated Use threeDSecure.redirectionData.returnUrl instead
             attr_accessor :return_url
 

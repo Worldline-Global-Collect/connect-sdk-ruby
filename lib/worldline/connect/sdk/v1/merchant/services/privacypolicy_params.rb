@@ -12,6 +12,7 @@ module Worldline
         module Merchant
           module Services
             # Query parameters for {https://apireference.connect.worldline-solutions.com/s2sapi/v1/en_US/ruby/services/privacypolicy.html Get privacy policy}
+            #
             # @attr [String] locale
             # @attr [Integer] payment_product_id
             class PrivacypolicyParams < Worldline::Connect::SDK::Communication::ParamRequest

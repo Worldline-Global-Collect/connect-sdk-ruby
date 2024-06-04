@@ -33,17 +33,14 @@ module Worldline
 
             attr_accessor :installments
 
-            #
             # @deprecated Use Order.shoppingCart.amountBreakdown instead
             attr_accessor :level3_summary_data
 
-            #
             # @deprecated No replacement
             attr_accessor :loan_recipient
 
             attr_accessor :lodging_data
 
-            #
             # @deprecated Use installments.numberOfInstallments instead
             attr_accessor :number_of_installments
 

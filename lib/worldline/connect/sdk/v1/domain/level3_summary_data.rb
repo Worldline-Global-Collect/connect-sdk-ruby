@@ -15,15 +15,12 @@ module Worldline
           # @deprecated Use ShoppingCart.amountBreakdown instead
           class Level3SummaryData < Worldline::Connect::SDK::Domain::DataObject
 
-            #
             # @deprecated Use ShoppingCart.amountBreakdown with type DISCOUNT instead
             attr_accessor :discount_amount
 
-            #
             # @deprecated Use ShoppingCart.amountBreakdown with type DUTY instead
             attr_accessor :duty_amount
 
-            #
             # @deprecated Use ShoppingCart.amountBreakdown with type SHIPPING instead
             attr_accessor :shipping_amount
 

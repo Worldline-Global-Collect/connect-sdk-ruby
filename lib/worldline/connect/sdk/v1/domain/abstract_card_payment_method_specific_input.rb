@@ -37,13 +37,11 @@ module Worldline
 
             attr_accessor :recurring
 
-            #
             # @deprecated Use recurring.recurringPaymentSequenceIndicator instead
             attr_accessor :recurring_payment_sequence_indicator
 
             attr_accessor :requires_approval
 
-            #
             # @deprecated Use threeDSecure.skipAuthentication instead
             attr_accessor :skip_authentication
 
@@ -55,7 +53,6 @@ module Worldline
 
             attr_accessor :transaction_channel
 
-            #
             # @deprecated Use unscheduledCardOnFileSequenceIndicator instead
             attr_accessor :unscheduled_card_on_file_indicator
 

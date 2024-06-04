@@ -51,7 +51,6 @@ module Worldline
 
             attr_accessor :redirection_data
 
-            #
             # @deprecated Use redirectionData.returnUrl instead
             attr_accessor :return_url
 

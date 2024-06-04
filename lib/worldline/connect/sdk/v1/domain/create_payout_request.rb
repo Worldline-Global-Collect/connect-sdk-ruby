@@ -32,15 +32,12 @@ module Worldline
           # @attr [String] swift_code
           class CreatePayoutRequest < Worldline::Connect::SDK::Domain::DataObject
 
-            #
             # @deprecated Moved to PayoutDetails
             attr_accessor :amount_of_money
 
-            #
             # @deprecated Moved to BankTransferPayoutMethodSpecificInput
             attr_accessor :bank_account_bban
 
-            #
             # @deprecated Moved to BankTransferPayoutMethodSpecificInput
             attr_accessor :bank_account_iban
 
@@ -48,27 +45,22 @@ module Worldline
 
             attr_accessor :card_payout_method_specific_input
 
-            #
             # @deprecated Moved to PayoutDetails
             attr_accessor :customer
 
             attr_accessor :merchant
 
-            #
             # @deprecated Moved to BankTransferPayoutMethodSpecificInput
             attr_accessor :payout_date
 
             attr_accessor :payout_details
 
-            #
             # @deprecated Moved to BankTransferPayoutMethodSpecificInput
             attr_accessor :payout_text
 
-            #
             # @deprecated Moved to PayoutDetails
             attr_accessor :references
 
-            #
             # @deprecated Moved to BankTransferPayoutMethodSpecificInput
             attr_accessor :swift_code
 

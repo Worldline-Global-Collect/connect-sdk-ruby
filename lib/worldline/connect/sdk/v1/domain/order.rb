@@ -33,13 +33,11 @@ module Worldline
 
             attr_accessor :customer
 
-            #
             # @deprecated Use shoppingCart.items instead
             attr_accessor :items
 
             attr_accessor :references
 
-            #
             # @deprecated Use Merchant.seller instead
             attr_accessor :seller
 

@@ -12,6 +12,7 @@ module Worldline
         module Merchant
           module Payments
             # Query parameters for {https://apireference.connect.worldline-solutions.com/s2sapi/v1/en_US/ruby/payments/find.html Find payments}
+            #
             # @attr [String] hosted_checkout_id
             # @attr [String] merchant_reference
             # @attr [Integer] merchant_order_id

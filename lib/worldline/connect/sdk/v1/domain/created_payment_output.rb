@@ -29,7 +29,6 @@ module Worldline
 
             attr_accessor :payment_creation_references
 
-            #
             # @deprecated Use Payment.statusOutput.statusCategory instead
             attr_accessor :payment_status_category
 

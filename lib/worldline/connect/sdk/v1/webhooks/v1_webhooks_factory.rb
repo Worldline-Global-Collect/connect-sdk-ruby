@@ -14,6 +14,7 @@ module Worldline
           class V1WebhooksFactory
 
             # Creates a WebhooksHelper that uses the given SecretKeyStore.
+            #
             # @return [Worldline::Connect::SDK::V1::Webhooks::WebhooksHelper]
             def create_helper(secret_key_store, marshaller: nil)
               marshaller = DefaultMarshaller.instance unless marshaller

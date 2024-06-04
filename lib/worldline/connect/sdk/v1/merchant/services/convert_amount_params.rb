@@ -12,6 +12,7 @@ module Worldline
         module Merchant
           module Services
             # Query parameters for {https://apireference.connect.worldline-solutions.com/s2sapi/v1/en_US/ruby/services/convertAmount.html Convert amount}
+            #
             # @attr [String] source
             # @attr [String] target
             # @attr [Integer] amount

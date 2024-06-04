@@ -16,6 +16,7 @@ module Worldline
           # @attr [Worldline::Connect::SDK::V1::Domain::CardEssentials] card
           # @attr [Worldline::Connect::SDK::V1::Domain::CardFraudResults] fraud_results
           # @attr [String] initial_scheme_transaction_id
+          # @attr [true/false] network_token_used
           # @attr [String] scheme_transaction_id
           # @attr [Worldline::Connect::SDK::V1::Domain::ThreeDSecureResults] three_d_secure_results
           # @attr [String] token
@@ -28,6 +29,8 @@ module Worldline
             attr_accessor :fraud_results
 
             attr_accessor :initial_scheme_transaction_id
+
+            attr_accessor :network_token_used
 
             attr_accessor :scheme_transaction_id
 
@@ -42,6 +45,7 @@ module Worldline
               hash['card'] = @card.to_h unless @card.nil?
               hash['fraudResults'] = @fraud_results.to_h unless @fraud_results.nil?
               hash['initialSchemeTransactionId'] = @initial_scheme_transaction_id unless @initial_scheme_transaction_id.nil?
+              hash['networkTokenUsed'] = @network_token_used unless @network_token_used.nil?
               hash['schemeTransactionId'] = @scheme_transaction_id unless @scheme_transaction_id.nil?
               hash['threeDSecureResults'] = @three_d_secure_results.to_h unless @three_d_secure_results.nil?
               hash['token'] = @token unless @token.nil?
@@ -63,6 +67,9 @@ module Worldline
               end
               if hash.has_key? 'initialSchemeTransactionId'
                 @initial_scheme_transaction_id = hash['initialSchemeTransactionId']
+              end
+              if hash.has_key? 'networkTokenUsed'
+                @network_token_used = hash['networkTokenUsed']
               end
               if hash.has_key? 'schemeTransactionId'
                 @scheme_transaction_id = hash['schemeTransactionId']

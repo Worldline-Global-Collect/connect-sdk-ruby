@@ -13,7 +13,6 @@ module Worldline
           # @attr [true/false] is_shortcut
           class RedirectPaymentProduct840SpecificInput < Worldline::Connect::SDK::V1::Domain::AbstractRedirectPaymentProduct840SpecificInput
 
-            #
             # @deprecated Use Order.references.descriptor instead
             attr_accessor :custom
 

@@ -42,7 +42,6 @@ module Worldline
 
             attr_accessor :personal_information
 
-            #
             # @deprecated Use Order.shipping.address instead
             attr_accessor :shipping_address
 

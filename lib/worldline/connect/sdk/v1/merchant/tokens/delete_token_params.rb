@@ -12,6 +12,7 @@ module Worldline
         module Merchant
           module Tokens
             # Query parameters for {https://apireference.connect.worldline-solutions.com/s2sapi/v1/en_US/ruby/tokens/delete.html Delete token}
+            #
             # @attr [String] mandate_cancel_date
             class DeleteTokenParams < Worldline::Connect::SDK::Communication::ParamRequest
 

@@ -12,7 +12,8 @@ module Worldline
         module Merchant
           module Disputes
             # Multipart/form-data parameters for {https://apireference.connect.worldline-solutions.com/fileserviceapi/v1/en_US/ruby/disputes/uploadFile.html Upload File}
-            # @attr [Worldline::Connect::SDK::UploadableFile] file
+            #
+            # @attr [Worldline::Connect::SDK::Domain::UploadableFile] file
             class UploadFileRequest < Worldline::Connect::SDK::Communication::MultipartFormDataRequest
 
               attr_accessor :file

@@ -8,8 +8,7 @@ module Worldline
   module Connect
     module SDK
       module V1
-        # This error is raised when the request refers to a resource or object that is not found by the Worldline Global Collect platform.
-        # The object referred to may not exist or it could have been removed recently.
+        # Represents an error response from the Worldline Global Collect platform when a non-existing or removed object is trying to be accessed.
         class ReferenceException < ApiException
 
           # Create a new ReferenceException.

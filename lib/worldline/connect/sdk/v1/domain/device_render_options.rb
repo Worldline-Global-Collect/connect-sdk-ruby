@@ -16,7 +16,6 @@ module Worldline
 
             attr_accessor :sdk_interface
 
-            #
             # @deprecated Use deviceRenderOptions.sdkUiTypes instead
             attr_accessor :sdk_ui_type
 

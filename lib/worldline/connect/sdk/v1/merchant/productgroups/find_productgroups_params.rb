@@ -12,6 +12,7 @@ module Worldline
         module Merchant
           module Productgroups
             # Query parameters for {https://apireference.connect.worldline-solutions.com/s2sapi/v1/en_US/ruby/productgroups/find.html Get payment product groups}
+            #
             # @attr [String] country_code
             # @attr [String] currency_code
             # @attr [String] locale

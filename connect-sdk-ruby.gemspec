@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name           = 'connect-sdk-ruby'
-  spec.version        = '3.0.0'
+  spec.version        = '3.1.0'
   spec.authors        = ['Worldline Global Collect']
   spec.email          = ['github.connect@worldline.com']
   spec.summary        = %q{SDK to communicate with the Worldline Global Collect platform using the Worldline Connect Server API}

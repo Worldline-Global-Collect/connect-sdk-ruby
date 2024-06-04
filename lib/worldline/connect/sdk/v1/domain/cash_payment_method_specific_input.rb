@@ -25,7 +25,6 @@ module Worldline
           # @attr [Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1526SpecificInput] payment_product1526_specific_input
           class CashPaymentMethodSpecificInput < Worldline::Connect::SDK::V1::Domain::AbstractCashPaymentMethodSpecificInput
 
-            #
             # @deprecated No replacement
             attr_accessor :payment_product1503_specific_input
 

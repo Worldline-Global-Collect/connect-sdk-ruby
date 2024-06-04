@@ -31,27 +31,22 @@ module Worldline
           # @attr [String] website
           class FraudFields < Worldline::Connect::SDK::Domain::DataObject
 
-            #
             # @deprecated For risk assessments there is no replacement. For other calls, use Order.shipping.addressIndicator instead
             attr_accessor :addresses_are_identical
 
             attr_accessor :black_list_data
 
-            #
             # @deprecated This should be the same as Order.customer.billingAddress
             attr_accessor :card_owner_address
 
             attr_accessor :customer_ip_address
 
-            #
             # @deprecated Use Order.customer.device.defaultFormFill instead
             attr_accessor :default_form_fill
 
-            #
             # @deprecated No replacement
             attr_accessor :device_fingerprint_activated
 
-            #
             # @deprecated Use Order.customer.device.deviceFingerprintTransactionId instead
             attr_accessor :device_fingerprint_transaction_id
 
@@ -59,35 +54,28 @@ module Worldline
 
             attr_accessor :gift_message
 
-            #
             # @deprecated Use Order.customer.account.hasForgottenPassword instead
             attr_accessor :has_forgotten_pwd
 
-            #
             # @deprecated Use Order.customer.account.hasPassword instead
             attr_accessor :has_password
 
-            #
             # @deprecated Use Order.customer.isPreviousCustomer instead
             attr_accessor :is_previous_customer
 
             attr_accessor :order_timezone
 
-            #
             # @deprecated Use Order.shipping.comments instead
             attr_accessor :ship_comments
 
-            #
             # @deprecated Use Order.shipping.trackingNumber instead
             attr_accessor :shipment_tracking_number
 
-            #
             # @deprecated No replacement
             attr_accessor :shipping_details
 
             attr_accessor :user_data
 
-            #
             # @deprecated Use Merchant.websiteUrl instead
             attr_accessor :website
 

@@ -50,7 +50,6 @@ module Worldline
 
             attr_accessor :is_e_ticket
 
-            #
             # @deprecated Use Order.customer.accountType instead
             attr_accessor :is_registered_customer
 

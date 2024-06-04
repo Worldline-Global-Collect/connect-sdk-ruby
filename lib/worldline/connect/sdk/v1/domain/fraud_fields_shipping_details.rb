@@ -15,15 +15,12 @@ module Worldline
           # @deprecated No replacement
           class FraudFieldsShippingDetails < Worldline::Connect::SDK::Domain::DataObject
 
-            #
             # @deprecated No replacement
             attr_accessor :method_details
 
-            #
             # @deprecated No replacement
             attr_accessor :method_speed
 
-            #
             # @deprecated No replacement
             attr_accessor :method_type
 

@@ -8,11 +8,11 @@ module Worldline
   module Connect
     module SDK
       module V1
-        # This exception is thrown when a request sent to the Worldline Global Collect platform is not correctly authenticated.
-        # Corresponds to a HTTP status code of 403.
-        # @see ApiException#initialize
+        # Represents an error response from the Worldline Global Collect platform when authorization failed.
         class AuthorizationException < ApiException
 
+          # Create a new AuthorizationException.
+          # @see ApiException#initialize
           def initialize(status_code, response_body, error_id, errors,
                          message='the Worldline Global Collect platform returned an authorization error response')
             super(status_code, response_body, error_id, errors, message)

@@ -65,7 +65,6 @@ module Worldline
 
             attr_accessor :passenger_class
 
-            #
             # @deprecated Use passengerClass instead
             attr_accessor :service_class
 

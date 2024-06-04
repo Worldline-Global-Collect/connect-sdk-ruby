@@ -19,7 +19,6 @@ module Worldline
           # @attr [String] payment_method
           class DecryptedPaymentData < Worldline::Connect::SDK::Domain::DataObject
 
-            #
             # @deprecated Use decryptedPaymentData.paymentMethod instead
             attr_accessor :auth_method
 

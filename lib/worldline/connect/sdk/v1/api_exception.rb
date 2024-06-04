@@ -8,14 +8,12 @@ module Worldline
   module Connect
     module SDK
       module V1
-        # Base class for many exceptions raised by the SDK.
-        # It is raised when an error response is received from the Worldline Global Collect platform.
-        # It contains data about the returned response.
+        # Represents an error response from the Worldline Global Collect platform which contains an ID and a list of errors.
         #
         # @attr_reader [Integer] status_code   HTTP status code of the returned response.
         # @attr_reader [String]  response_body Message body of the returned response.
-        # @attr_reader [String]  error_id      An error id corresponding to the error that occurred, if available.
-        # @attr_reader [Array<Worldline::Connect::SDK::V1::Domain::APIError>] errors A list of errors received from the Worldline Global Collect platform;
+        # @attr_reader [String] error_id The _errorId_ received from the Worldline Global Collect platform if available.
+        # @attr_reader [Array<Worldline::Connect::SDK::V1::Domain::APIError>] errors The _errors_ received from the Worldline Global Collect platform if available;
         #              may be empty but never _nil_
         class ApiException < RuntimeError
 
@@ -23,8 +21,8 @@ module Worldline
           #
           # @param status_code   (Integer) HTTP status code the response
           # @param response_body (String) HTTP response body
-          # @param error_id      (String) error id of the error, may be _nil_
-          # @param errors        (Array<Worldline::Connect::SDK::V1::Domain::APIError>) a list of errors that occurred, may be empty
+          # @param error_id      (String) The _errorId_ received from the Worldline Global Collect platform
+          # @param errors        (Array<Worldline::Connect::SDK::V1::Domain::APIError>) The _errors_ received from the Worldline Global Collect platform
           # @param message       (String) error message to include
           def initialize(status_code, response_body, error_id, errors,
                          message='the Worldline Global Collect platform returned an error response')
