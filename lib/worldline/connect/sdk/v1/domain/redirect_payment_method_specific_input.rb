@@ -5,7 +5,6 @@
 require 'worldline/connect/sdk/v1/domain/abstract_redirect_payment_method_specific_input'
 require 'worldline/connect/sdk/v1/domain/redirect_payment_product4101_specific_input'
 require 'worldline/connect/sdk/v1/domain/redirect_payment_product809_specific_input'
-require 'worldline/connect/sdk/v1/domain/redirect_payment_product816_specific_input'
 require 'worldline/connect/sdk/v1/domain/redirect_payment_product840_specific_input'
 require 'worldline/connect/sdk/v1/domain/redirect_payment_product861_specific_input'
 require 'worldline/connect/sdk/v1/domain/redirect_payment_product863_specific_input'
@@ -21,7 +20,6 @@ module Worldline
           # @attr [true/false] is_recurring
           # @attr [Worldline::Connect::SDK::V1::Domain::RedirectPaymentProduct4101SpecificInput] payment_product4101_specific_input
           # @attr [Worldline::Connect::SDK::V1::Domain::RedirectPaymentProduct809SpecificInput] payment_product809_specific_input
-          # @attr [Worldline::Connect::SDK::V1::Domain::RedirectPaymentProduct816SpecificInput] payment_product816_specific_input
           # @attr [Worldline::Connect::SDK::V1::Domain::RedirectPaymentProduct840SpecificInput] payment_product840_specific_input
           # @attr [Worldline::Connect::SDK::V1::Domain::RedirectPaymentProduct861SpecificInput] payment_product861_specific_input
           # @attr [Worldline::Connect::SDK::V1::Domain::RedirectPaymentProduct863SpecificInput] payment_product863_specific_input
@@ -36,8 +34,6 @@ module Worldline
             attr_accessor :payment_product4101_specific_input
 
             attr_accessor :payment_product809_specific_input
-
-            attr_accessor :payment_product816_specific_input
 
             attr_accessor :payment_product840_specific_input
 
@@ -60,7 +56,6 @@ module Worldline
               hash['isRecurring'] = @is_recurring unless @is_recurring.nil?
               hash['paymentProduct4101SpecificInput'] = @payment_product4101_specific_input.to_h unless @payment_product4101_specific_input.nil?
               hash['paymentProduct809SpecificInput'] = @payment_product809_specific_input.to_h unless @payment_product809_specific_input.nil?
-              hash['paymentProduct816SpecificInput'] = @payment_product816_specific_input.to_h unless @payment_product816_specific_input.nil?
               hash['paymentProduct840SpecificInput'] = @payment_product840_specific_input.to_h unless @payment_product840_specific_input.nil?
               hash['paymentProduct861SpecificInput'] = @payment_product861_specific_input.to_h unless @payment_product861_specific_input.nil?
               hash['paymentProduct863SpecificInput'] = @payment_product863_specific_input.to_h unless @payment_product863_specific_input.nil?
@@ -83,10 +78,6 @@ module Worldline
               if hash.has_key? 'paymentProduct809SpecificInput'
                 raise TypeError, "value '%s' is not a Hash" % [hash['paymentProduct809SpecificInput']] unless hash['paymentProduct809SpecificInput'].is_a? Hash
                 @payment_product809_specific_input = Worldline::Connect::SDK::V1::Domain::RedirectPaymentProduct809SpecificInput.new_from_hash(hash['paymentProduct809SpecificInput'])
-              end
-              if hash.has_key? 'paymentProduct816SpecificInput'
-                raise TypeError, "value '%s' is not a Hash" % [hash['paymentProduct816SpecificInput']] unless hash['paymentProduct816SpecificInput'].is_a? Hash
-                @payment_product816_specific_input = Worldline::Connect::SDK::V1::Domain::RedirectPaymentProduct816SpecificInput.new_from_hash(hash['paymentProduct816SpecificInput'])
               end
               if hash.has_key? 'paymentProduct840SpecificInput'
                 raise TypeError, "value '%s' is not a Hash" % [hash['paymentProduct840SpecificInput']] unless hash['paymentProduct840SpecificInput'].is_a? Hash

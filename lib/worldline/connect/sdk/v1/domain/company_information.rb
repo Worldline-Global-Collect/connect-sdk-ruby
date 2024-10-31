@@ -9,9 +9,12 @@ module Worldline
     module SDK
       module V1
         module Domain
+          # @attr [String] date_of_incorporation
           # @attr [String] name
           # @attr [String] vat_number
           class CompanyInformation < Worldline::Connect::SDK::Domain::DataObject
+
+            attr_accessor :date_of_incorporation
 
             attr_accessor :name
 
@@ -20,6 +23,7 @@ module Worldline
             # @return (Hash)
             def to_h
               hash = super
+              hash['dateOfIncorporation'] = @date_of_incorporation unless @date_of_incorporation.nil?
               hash['name'] = @name unless @name.nil?
               hash['vatNumber'] = @vat_number unless @vat_number.nil?
               hash
@@ -27,6 +31,9 @@ module Worldline
 
             def from_hash(hash)
               super
+              if hash.has_key? 'dateOfIncorporation'
+                @date_of_incorporation = hash['dateOfIncorporation']
+              end
               if hash.has_key? 'name'
                 @name = hash['name']
               end
