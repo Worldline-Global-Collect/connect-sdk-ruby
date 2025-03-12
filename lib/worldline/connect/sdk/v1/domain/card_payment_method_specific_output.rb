@@ -5,6 +5,7 @@
 require 'worldline/connect/sdk/v1/domain/abstract_payment_method_specific_output'
 require 'worldline/connect/sdk/v1/domain/card_essentials'
 require 'worldline/connect/sdk/v1/domain/card_fraud_results'
+require 'worldline/connect/sdk/v1/domain/network_token_data'
 require 'worldline/connect/sdk/v1/domain/three_d_secure_results'
 
 module Worldline
@@ -16,7 +17,9 @@ module Worldline
           # @attr [Worldline::Connect::SDK::V1::Domain::CardEssentials] card
           # @attr [Worldline::Connect::SDK::V1::Domain::CardFraudResults] fraud_results
           # @attr [String] initial_scheme_transaction_id
+          # @attr [Worldline::Connect::SDK::V1::Domain::NetworkTokenData] network_token_data
           # @attr [true/false] network_token_used
+          # @attr [String] payment_account_reference
           # @attr [String] scheme_transaction_id
           # @attr [Worldline::Connect::SDK::V1::Domain::ThreeDSecureResults] three_d_secure_results
           # @attr [String] token
@@ -30,7 +33,11 @@ module Worldline
 
             attr_accessor :initial_scheme_transaction_id
 
+            attr_accessor :network_token_data
+
             attr_accessor :network_token_used
+
+            attr_accessor :payment_account_reference
 
             attr_accessor :scheme_transaction_id
 
@@ -45,7 +52,9 @@ module Worldline
               hash['card'] = @card.to_h unless @card.nil?
               hash['fraudResults'] = @fraud_results.to_h unless @fraud_results.nil?
               hash['initialSchemeTransactionId'] = @initial_scheme_transaction_id unless @initial_scheme_transaction_id.nil?
+              hash['networkTokenData'] = @network_token_data.to_h unless @network_token_data.nil?
               hash['networkTokenUsed'] = @network_token_used unless @network_token_used.nil?
+              hash['paymentAccountReference'] = @payment_account_reference unless @payment_account_reference.nil?
               hash['schemeTransactionId'] = @scheme_transaction_id unless @scheme_transaction_id.nil?
               hash['threeDSecureResults'] = @three_d_secure_results.to_h unless @three_d_secure_results.nil?
               hash['token'] = @token unless @token.nil?
@@ -68,8 +77,15 @@ module Worldline
               if hash.has_key? 'initialSchemeTransactionId'
                 @initial_scheme_transaction_id = hash['initialSchemeTransactionId']
               end
+              if hash.has_key? 'networkTokenData'
+                raise TypeError, "value '%s' is not a Hash" % [hash['networkTokenData']] unless hash['networkTokenData'].is_a? Hash
+                @network_token_data = Worldline::Connect::SDK::V1::Domain::NetworkTokenData.new_from_hash(hash['networkTokenData'])
+              end
               if hash.has_key? 'networkTokenUsed'
                 @network_token_used = hash['networkTokenUsed']
+              end
+              if hash.has_key? 'paymentAccountReference'
+                @payment_account_reference = hash['paymentAccountReference']
               end
               if hash.has_key? 'schemeTransactionId'
                 @scheme_transaction_id = hash['schemeTransactionId']
