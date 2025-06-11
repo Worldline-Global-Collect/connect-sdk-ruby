@@ -13,6 +13,8 @@ describe 'RiskAssessments' do
   after(:context){WebMock.disable_net_connect!}
 
   it 'can let the Worldline Global Collect platform assess risks' do
+    skip 'Risk assessments are not available for pre-prod sandbox accounts'
+
     bank_account_bban = Worldline::Connect::SDK::V1::Domain::BankAccountBban.new
     bank_account_bban.country_code = 'DE'
     bank_account_bban.account_number = '0532013000'
