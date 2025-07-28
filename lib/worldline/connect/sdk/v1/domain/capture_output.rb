@@ -5,10 +5,6 @@
 require 'worldline/connect/sdk/v1/domain/bank_transfer_payment_method_specific_output'
 require 'worldline/connect/sdk/v1/domain/card_payment_method_specific_output'
 require 'worldline/connect/sdk/v1/domain/cash_payment_method_specific_output'
-require 'worldline/connect/sdk/v1/domain/e_invoice_payment_method_specific_output'
-require 'worldline/connect/sdk/v1/domain/invoice_payment_method_specific_output'
-require 'worldline/connect/sdk/v1/domain/mobile_payment_method_specific_output'
-require 'worldline/connect/sdk/v1/domain/non_sepa_direct_debit_payment_method_specific_output'
 require 'worldline/connect/sdk/v1/domain/order_output'
 require 'worldline/connect/sdk/v1/domain/redirect_payment_method_specific_output'
 require 'worldline/connect/sdk/v1/domain/sepa_direct_debit_payment_method_specific_output'
@@ -23,10 +19,6 @@ module Worldline
           # @attr [Worldline::Connect::SDK::V1::Domain::BankTransferPaymentMethodSpecificOutput] bank_transfer_payment_method_specific_output
           # @attr [Worldline::Connect::SDK::V1::Domain::CardPaymentMethodSpecificOutput] card_payment_method_specific_output
           # @attr [Worldline::Connect::SDK::V1::Domain::CashPaymentMethodSpecificOutput] cash_payment_method_specific_output
-          # @attr [Worldline::Connect::SDK::V1::Domain::NonSepaDirectDebitPaymentMethodSpecificOutput] direct_debit_payment_method_specific_output
-          # @attr [Worldline::Connect::SDK::V1::Domain::EInvoicePaymentMethodSpecificOutput] e_invoice_payment_method_specific_output
-          # @attr [Worldline::Connect::SDK::V1::Domain::InvoicePaymentMethodSpecificOutput] invoice_payment_method_specific_output
-          # @attr [Worldline::Connect::SDK::V1::Domain::MobilePaymentMethodSpecificOutput] mobile_payment_method_specific_output
           # @attr [String] payment_method
           # @attr [Worldline::Connect::SDK::V1::Domain::RedirectPaymentMethodSpecificOutput] redirect_payment_method_specific_output
           # @attr [String] reversal_reason
@@ -42,14 +34,6 @@ module Worldline
             attr_accessor :card_payment_method_specific_output
 
             attr_accessor :cash_payment_method_specific_output
-
-            attr_accessor :direct_debit_payment_method_specific_output
-
-            attr_accessor :e_invoice_payment_method_specific_output
-
-            attr_accessor :invoice_payment_method_specific_output
-
-            attr_accessor :mobile_payment_method_specific_output
 
             attr_accessor :payment_method
 
@@ -67,10 +51,6 @@ module Worldline
               hash['bankTransferPaymentMethodSpecificOutput'] = @bank_transfer_payment_method_specific_output.to_h unless @bank_transfer_payment_method_specific_output.nil?
               hash['cardPaymentMethodSpecificOutput'] = @card_payment_method_specific_output.to_h unless @card_payment_method_specific_output.nil?
               hash['cashPaymentMethodSpecificOutput'] = @cash_payment_method_specific_output.to_h unless @cash_payment_method_specific_output.nil?
-              hash['directDebitPaymentMethodSpecificOutput'] = @direct_debit_payment_method_specific_output.to_h unless @direct_debit_payment_method_specific_output.nil?
-              hash['eInvoicePaymentMethodSpecificOutput'] = @e_invoice_payment_method_specific_output.to_h unless @e_invoice_payment_method_specific_output.nil?
-              hash['invoicePaymentMethodSpecificOutput'] = @invoice_payment_method_specific_output.to_h unless @invoice_payment_method_specific_output.nil?
-              hash['mobilePaymentMethodSpecificOutput'] = @mobile_payment_method_specific_output.to_h unless @mobile_payment_method_specific_output.nil?
               hash['paymentMethod'] = @payment_method unless @payment_method.nil?
               hash['redirectPaymentMethodSpecificOutput'] = @redirect_payment_method_specific_output.to_h unless @redirect_payment_method_specific_output.nil?
               hash['reversalReason'] = @reversal_reason unless @reversal_reason.nil?
@@ -97,22 +77,6 @@ module Worldline
               if hash.has_key? 'cashPaymentMethodSpecificOutput'
                 raise TypeError, "value '%s' is not a Hash" % [hash['cashPaymentMethodSpecificOutput']] unless hash['cashPaymentMethodSpecificOutput'].is_a? Hash
                 @cash_payment_method_specific_output = Worldline::Connect::SDK::V1::Domain::CashPaymentMethodSpecificOutput.new_from_hash(hash['cashPaymentMethodSpecificOutput'])
-              end
-              if hash.has_key? 'directDebitPaymentMethodSpecificOutput'
-                raise TypeError, "value '%s' is not a Hash" % [hash['directDebitPaymentMethodSpecificOutput']] unless hash['directDebitPaymentMethodSpecificOutput'].is_a? Hash
-                @direct_debit_payment_method_specific_output = Worldline::Connect::SDK::V1::Domain::NonSepaDirectDebitPaymentMethodSpecificOutput.new_from_hash(hash['directDebitPaymentMethodSpecificOutput'])
-              end
-              if hash.has_key? 'eInvoicePaymentMethodSpecificOutput'
-                raise TypeError, "value '%s' is not a Hash" % [hash['eInvoicePaymentMethodSpecificOutput']] unless hash['eInvoicePaymentMethodSpecificOutput'].is_a? Hash
-                @e_invoice_payment_method_specific_output = Worldline::Connect::SDK::V1::Domain::EInvoicePaymentMethodSpecificOutput.new_from_hash(hash['eInvoicePaymentMethodSpecificOutput'])
-              end
-              if hash.has_key? 'invoicePaymentMethodSpecificOutput'
-                raise TypeError, "value '%s' is not a Hash" % [hash['invoicePaymentMethodSpecificOutput']] unless hash['invoicePaymentMethodSpecificOutput'].is_a? Hash
-                @invoice_payment_method_specific_output = Worldline::Connect::SDK::V1::Domain::InvoicePaymentMethodSpecificOutput.new_from_hash(hash['invoicePaymentMethodSpecificOutput'])
-              end
-              if hash.has_key? 'mobilePaymentMethodSpecificOutput'
-                raise TypeError, "value '%s' is not a Hash" % [hash['mobilePaymentMethodSpecificOutput']] unless hash['mobilePaymentMethodSpecificOutput'].is_a? Hash
-                @mobile_payment_method_specific_output = Worldline::Connect::SDK::V1::Domain::MobilePaymentMethodSpecificOutput.new_from_hash(hash['mobilePaymentMethodSpecificOutput'])
               end
               if hash.has_key? 'paymentMethod'
                 @payment_method = hash['paymentMethod']

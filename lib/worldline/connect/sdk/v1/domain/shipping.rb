@@ -12,9 +12,11 @@ module Worldline
         module Domain
           # @attr [Worldline::Connect::SDK::V1::Domain::AddressPersonal] address
           # @attr [String] address_indicator
+          # @attr [String] carrier
           # @attr [String] comments
           # @attr [String] email_address
           # @attr [String] first_usage_date
+          # @attr [String] instructions
           # @attr [true/false] is_first_usage
           # @attr [String] shipped_from_zip
           # @attr [String] tracking_number
@@ -25,11 +27,15 @@ module Worldline
 
             attr_accessor :address_indicator
 
+            attr_accessor :carrier
+
             attr_accessor :comments
 
             attr_accessor :email_address
 
             attr_accessor :first_usage_date
+
+            attr_accessor :instructions
 
             attr_accessor :is_first_usage
 
@@ -44,9 +50,11 @@ module Worldline
               hash = super
               hash['address'] = @address.to_h unless @address.nil?
               hash['addressIndicator'] = @address_indicator unless @address_indicator.nil?
+              hash['carrier'] = @carrier unless @carrier.nil?
               hash['comments'] = @comments unless @comments.nil?
               hash['emailAddress'] = @email_address unless @email_address.nil?
               hash['firstUsageDate'] = @first_usage_date unless @first_usage_date.nil?
+              hash['instructions'] = @instructions unless @instructions.nil?
               hash['isFirstUsage'] = @is_first_usage unless @is_first_usage.nil?
               hash['shippedFromZip'] = @shipped_from_zip unless @shipped_from_zip.nil?
               hash['trackingNumber'] = @tracking_number unless @tracking_number.nil?
@@ -63,6 +71,9 @@ module Worldline
               if hash.has_key? 'addressIndicator'
                 @address_indicator = hash['addressIndicator']
               end
+              if hash.has_key? 'carrier'
+                @carrier = hash['carrier']
+              end
               if hash.has_key? 'comments'
                 @comments = hash['comments']
               end
@@ -71,6 +82,9 @@ module Worldline
               end
               if hash.has_key? 'firstUsageDate'
                 @first_usage_date = hash['firstUsageDate']
+              end
+              if hash.has_key? 'instructions'
+                @instructions = hash['instructions']
               end
               if hash.has_key? 'isFirstUsage'
                 @is_first_usage = hash['isFirstUsage']
