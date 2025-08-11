@@ -10,6 +10,7 @@ require 'worldline/connect/sdk/v1/domain/payment_product3201_specific_output'
 require 'worldline/connect/sdk/v1/domain/payment_product806_specific_output'
 require 'worldline/connect/sdk/v1/domain/payment_product836_specific_output'
 require 'worldline/connect/sdk/v1/domain/payment_product840_specific_output'
+require 'worldline/connect/sdk/v1/domain/payment_product866_specific_output'
 
 module Worldline
   module Connect
@@ -24,6 +25,7 @@ module Worldline
           # @attr [Worldline::Connect::SDK::V1::Domain::PaymentProduct806SpecificOutput] payment_product806_specific_output
           # @attr [Worldline::Connect::SDK::V1::Domain::PaymentProduct836SpecificOutput] payment_product836_specific_output
           # @attr [Worldline::Connect::SDK::V1::Domain::PaymentProduct840SpecificOutput] payment_product840_specific_output
+          # @attr [Worldline::Connect::SDK::V1::Domain::PaymentProduct866SpecificOutput] payment_product866_specific_output
           # @attr [String] token
           class RedirectPaymentMethodSpecificOutput < Worldline::Connect::SDK::V1::Domain::AbstractPaymentMethodSpecificOutput
 
@@ -43,6 +45,8 @@ module Worldline
 
             attr_accessor :payment_product840_specific_output
 
+            attr_accessor :payment_product866_specific_output
+
             attr_accessor :token
 
             # @return (Hash)
@@ -56,6 +60,7 @@ module Worldline
               hash['paymentProduct806SpecificOutput'] = @payment_product806_specific_output.to_h unless @payment_product806_specific_output.nil?
               hash['paymentProduct836SpecificOutput'] = @payment_product836_specific_output.to_h unless @payment_product836_specific_output.nil?
               hash['paymentProduct840SpecificOutput'] = @payment_product840_specific_output.to_h unless @payment_product840_specific_output.nil?
+              hash['paymentProduct866SpecificOutput'] = @payment_product866_specific_output.to_h unless @payment_product866_specific_output.nil?
               hash['token'] = @token unless @token.nil?
               hash
             end
@@ -92,6 +97,10 @@ module Worldline
               if hash.has_key? 'paymentProduct840SpecificOutput'
                 raise TypeError, "value '%s' is not a Hash" % [hash['paymentProduct840SpecificOutput']] unless hash['paymentProduct840SpecificOutput'].is_a? Hash
                 @payment_product840_specific_output = Worldline::Connect::SDK::V1::Domain::PaymentProduct840SpecificOutput.new_from_hash(hash['paymentProduct840SpecificOutput'])
+              end
+              if hash.has_key? 'paymentProduct866SpecificOutput'
+                raise TypeError, "value '%s' is not a Hash" % [hash['paymentProduct866SpecificOutput']] unless hash['paymentProduct866SpecificOutput'].is_a? Hash
+                @payment_product866_specific_output = Worldline::Connect::SDK::V1::Domain::PaymentProduct866SpecificOutput.new_from_hash(hash['paymentProduct866SpecificOutput'])
               end
               if hash.has_key? 'token'
                 @token = hash['token']
