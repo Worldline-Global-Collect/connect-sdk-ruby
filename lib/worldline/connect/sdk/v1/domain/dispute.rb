@@ -11,12 +11,15 @@ module Worldline
     module SDK
       module V1
         module Domain
+          # @attr [String] capture_id
           # @attr [Worldline::Connect::SDK::V1::Domain::DisputeOutput] dispute_output
           # @attr [String] id
           # @attr [String] payment_id
           # @attr [String] status
           # @attr [Worldline::Connect::SDK::V1::Domain::DisputeStatusOutput] status_output
           class Dispute < Worldline::Connect::SDK::Domain::DataObject
+
+            attr_accessor :capture_id
 
             attr_accessor :dispute_output
 
@@ -31,6 +34,7 @@ module Worldline
             # @return (Hash)
             def to_h
               hash = super
+              hash['captureId'] = @capture_id unless @capture_id.nil?
               hash['disputeOutput'] = @dispute_output.to_h unless @dispute_output.nil?
               hash['id'] = @id unless @id.nil?
               hash['paymentId'] = @payment_id unless @payment_id.nil?
@@ -41,6 +45,9 @@ module Worldline
 
             def from_hash(hash)
               super
+              if hash.has_key? 'captureId'
+                @capture_id = hash['captureId']
+              end
               if hash.has_key? 'disputeOutput'
                 raise TypeError, "value '%s' is not a Hash" % [hash['disputeOutput']] unless hash['disputeOutput'].is_a? Hash
                 @dispute_output = Worldline::Connect::SDK::V1::Domain::DisputeOutput.new_from_hash(hash['disputeOutput'])

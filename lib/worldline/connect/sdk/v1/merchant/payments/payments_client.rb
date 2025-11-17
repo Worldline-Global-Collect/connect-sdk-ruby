@@ -101,6 +101,7 @@ module Worldline
               # Resource /!{merchantId}/payments/!{paymentId} - {https://apireference.connect.worldline-solutions.com/s2sapi/v1/en_US/ruby/payments/get.html Get payment}
               #
               # @param payment_id [String]
+              # @param query      [Worldline::Connect::SDK::V1::Merchant::Payments::GetPaymentParams]
               # @param context    [Worldline::Connect::SDK::CallContext, nil]
               # @return [Worldline::Connect::SDK::V1::Domain::PaymentResponse]
               # @raise [Worldline::Connect::SDK::V1::IdempotenceException] if an idempotent request caused a conflict (HTTP status code 409)
@@ -112,7 +113,7 @@ module Worldline
               #        the Worldline Global Collect platform was unable to process a message from a downstream partner/acquirer,
               #        or the service that you're trying to reach is temporary unavailable (HTTP status code 500, 502 or 503)
               # @raise [Worldline::Connect::SDK::V1::ApiException] if the Worldline Global Collect platform returned any other error
-              def get(payment_id, context = nil)
+              def get(payment_id, query, context = nil)
                 path_context = {
                   'paymentId'.freeze => payment_id,
                 }
@@ -120,7 +121,7 @@ module Worldline
                 @communicator.get(
                   uri,
                   client_headers,
-                  nil,
+                  query,
                   Worldline::Connect::SDK::V1::Domain::PaymentResponse,
                   context)
               rescue ResponseException => e

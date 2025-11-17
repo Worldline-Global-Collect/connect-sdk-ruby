@@ -3,16 +3,11 @@
 # https://apireference.connect.worldline-solutions.com/
 #
 require 'worldline/connect/sdk/factory'
-require 'worldline/connect/sdk/v1/merchant/payments/get_payment_params'
 
-Payments = Worldline::Connect::SDK::V1::Merchant::Payments
 
 def example
   get_client do |client|
-    query = Payments::GetPaymentParams.new
-    query.return_operations = true
-
-    response = client.v1.merchant('merchantId').payments.get('paymentId', query)
+    response = client.v1.merchant('merchantId').captures.disputes('captureId')
   end
 end
 

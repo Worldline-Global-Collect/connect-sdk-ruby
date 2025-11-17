@@ -3,6 +3,7 @@
 # https://apireference.connect.worldline-solutions.com/
 #
 require 'worldline/connect/sdk/domain/data_object'
+require 'worldline/connect/sdk/v1/domain/capture_response'
 require 'worldline/connect/sdk/v1/domain/dispute_response'
 require 'worldline/connect/sdk/v1/domain/payment_response'
 require 'worldline/connect/sdk/v1/domain/payout_response'
@@ -15,6 +16,7 @@ module Worldline
       module V1
         module Domain
           # @attr [String] api_version
+          # @attr [Worldline::Connect::SDK::V1::Domain::CaptureResponse] capture
           # @attr [String] created
           # @attr [Worldline::Connect::SDK::V1::Domain::DisputeResponse] dispute
           # @attr [String] id
@@ -27,6 +29,8 @@ module Worldline
           class WebhooksEvent < Worldline::Connect::SDK::Domain::DataObject
 
             attr_accessor :api_version
+
+            attr_accessor :capture
 
             attr_accessor :created
 
@@ -50,6 +54,7 @@ module Worldline
             def to_h
               hash = super
               hash['apiVersion'] = @api_version unless @api_version.nil?
+              hash['capture'] = @capture.to_h unless @capture.nil?
               hash['created'] = @created unless @created.nil?
               hash['dispute'] = @dispute.to_h unless @dispute.nil?
               hash['id'] = @id unless @id.nil?
@@ -66,6 +71,10 @@ module Worldline
               super
               if hash.has_key? 'apiVersion'
                 @api_version = hash['apiVersion']
+              end
+              if hash.has_key? 'capture'
+                raise TypeError, "value '%s' is not a Hash" % [hash['capture']] unless hash['capture'].is_a? Hash
+                @capture = Worldline::Connect::SDK::V1::Domain::CaptureResponse.new_from_hash(hash['capture'])
               end
               if hash.has_key? 'created'
                 @created = hash['created']
