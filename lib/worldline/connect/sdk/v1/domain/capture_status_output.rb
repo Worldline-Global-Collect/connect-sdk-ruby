@@ -10,12 +10,15 @@ module Worldline
     module SDK
       module V1
         module Domain
+          # @attr [true/false] is_final
           # @attr [true/false] is_refundable
           # @attr [true/false] is_retriable
           # @attr [Array<Worldline::Connect::SDK::V1::Domain::KeyValuePair>] provider_raw_output
           # @attr [Integer] status_code
           # @attr [String] status_code_change_date_time
           class CaptureStatusOutput < Worldline::Connect::SDK::Domain::DataObject
+
+            attr_accessor :is_final
 
             attr_accessor :is_refundable
 
@@ -30,6 +33,7 @@ module Worldline
             # @return (Hash)
             def to_h
               hash = super
+              hash['isFinal'] = @is_final unless @is_final.nil?
               hash['isRefundable'] = @is_refundable unless @is_refundable.nil?
               hash['isRetriable'] = @is_retriable unless @is_retriable.nil?
               hash['providerRawOutput'] = @provider_raw_output.collect{|val| val.to_h} unless @provider_raw_output.nil?
@@ -40,6 +44,9 @@ module Worldline
 
             def from_hash(hash)
               super
+              if hash.has_key? 'isFinal'
+                @is_final = hash['isFinal']
+              end
               if hash.has_key? 'isRefundable'
                 @is_refundable = hash['isRefundable']
               end

@@ -17,6 +17,7 @@ module Worldline
           # @attr [Worldline::Connect::SDK::V1::Domain::BankRefundMethodSpecificInput] bank_refund_method_specific_input
           # @attr [Worldline::Connect::SDK::V1::Domain::RefundCustomer] customer
           # @attr [String] refund_date
+          # @attr [String] refund_reason
           # @attr [Worldline::Connect::SDK::V1::Domain::RefundReferences] refund_references
           class RefundRequest < Worldline::Connect::SDK::Domain::DataObject
 
@@ -28,6 +29,8 @@ module Worldline
 
             attr_accessor :refund_date
 
+            attr_accessor :refund_reason
+
             attr_accessor :refund_references
 
             # @return (Hash)
@@ -37,6 +40,7 @@ module Worldline
               hash['bankRefundMethodSpecificInput'] = @bank_refund_method_specific_input.to_h unless @bank_refund_method_specific_input.nil?
               hash['customer'] = @customer.to_h unless @customer.nil?
               hash['refundDate'] = @refund_date unless @refund_date.nil?
+              hash['refundReason'] = @refund_reason unless @refund_reason.nil?
               hash['refundReferences'] = @refund_references.to_h unless @refund_references.nil?
               hash
             end
@@ -57,6 +61,9 @@ module Worldline
               end
               if hash.has_key? 'refundDate'
                 @refund_date = hash['refundDate']
+              end
+              if hash.has_key? 'refundReason'
+                @refund_reason = hash['refundReason']
               end
               if hash.has_key? 'refundReferences'
                 raise TypeError, "value '%s' is not a Hash" % [hash['refundReferences']] unless hash['refundReferences'].is_a? Hash
