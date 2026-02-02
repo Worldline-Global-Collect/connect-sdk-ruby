@@ -15,6 +15,7 @@ module Worldline
           # @attr [Worldline::Connect::SDK::V1::Domain::AmountOfMoney] amount_of_money_after_trial
           # @attr [String] end_date
           # @attr [true/false] is_recurring
+          # @attr [String] start_date
           # @attr [Worldline::Connect::SDK::V1::Domain::TrialPeriod] trial_period
           # @attr [Worldline::Connect::SDK::V1::Domain::Frequency] trial_period_recurring
           class TrialInformation < Worldline::Connect::SDK::Domain::DataObject
@@ -24,6 +25,8 @@ module Worldline
             attr_accessor :end_date
 
             attr_accessor :is_recurring
+
+            attr_accessor :start_date
 
             attr_accessor :trial_period
 
@@ -35,6 +38,7 @@ module Worldline
               hash['amountOfMoneyAfterTrial'] = @amount_of_money_after_trial.to_h unless @amount_of_money_after_trial.nil?
               hash['endDate'] = @end_date unless @end_date.nil?
               hash['isRecurring'] = @is_recurring unless @is_recurring.nil?
+              hash['startDate'] = @start_date unless @start_date.nil?
               hash['trialPeriod'] = @trial_period.to_h unless @trial_period.nil?
               hash['trialPeriodRecurring'] = @trial_period_recurring.to_h unless @trial_period_recurring.nil?
               hash
@@ -51,6 +55,9 @@ module Worldline
               end
               if hash.has_key? 'isRecurring'
                 @is_recurring = hash['isRecurring']
+              end
+              if hash.has_key? 'startDate'
+                @start_date = hash['startDate']
               end
               if hash.has_key? 'trialPeriod'
                 raise TypeError, "value '%s' is not a Hash" % [hash['trialPeriod']] unless hash['trialPeriod'].is_a? Hash
