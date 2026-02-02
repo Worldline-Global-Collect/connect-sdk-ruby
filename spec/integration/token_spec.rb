@@ -1,3 +1,4 @@
+require 'date'
 require 'spec_helper'
 require 'integration_setup'
 require 'webmock/rspec'
@@ -15,6 +16,8 @@ describe 'token' do
   after(:context){WebMock.disable_net_connect!}
 
   it 'can be created and deleted' do
+    expiry_date = (Date.today + 365 / 2).strftime('%m%y')
+
     billing_address = Worldline::Connect::SDK::V1::Domain::Address.new
     billing_address.country_code = 'NL'
     customer = Worldline::Connect::SDK::V1::Domain::CustomerToken.new
@@ -23,7 +26,7 @@ describe 'token' do
     card_without_ccv.cardholder_name = 'Jan'
     card_without_ccv.issue_number = '12'
     card_without_ccv.card_number = '4567350000427977'
-    card_without_ccv.expiry_date = '1225'
+    card_without_ccv.expiry_date = expiry_date
     card_data = Worldline::Connect::SDK::V1::Domain::TokenCardData.new
     card_data.card_without_cvv = card_without_ccv
     card = Worldline::Connect::SDK::V1::Domain::TokenCard.new
