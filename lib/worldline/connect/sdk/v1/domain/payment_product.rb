@@ -5,6 +5,7 @@
 require 'worldline/connect/sdk/domain/data_object'
 require 'worldline/connect/sdk/v1/domain/account_on_file'
 require 'worldline/connect/sdk/v1/domain/authentication_indicator'
+require 'worldline/connect/sdk/v1/domain/click_to_pay_configuration'
 require 'worldline/connect/sdk/v1/domain/payment_product302_specific_data'
 require 'worldline/connect/sdk/v1/domain/payment_product320_specific_data'
 require 'worldline/connect/sdk/v1/domain/payment_product863_specific_data'
@@ -18,12 +19,14 @@ module Worldline
         module Domain
           # @attr [Array<Worldline::Connect::SDK::V1::Domain::AccountOnFile>] accounts_on_file
           # @attr [String] acquirer_country
+          # @attr [true/false] allows_click_to_pay
           # @attr [true/false] allows_installments
           # @attr [true/false] allows_recurring
           # @attr [true/false] allows_tokenization
           # @attr [Worldline::Connect::SDK::V1::Domain::AuthenticationIndicator] authentication_indicator
           # @attr [true/false] auto_tokenized
           # @attr [true/false] can_be_iframed
+          # @attr [Worldline::Connect::SDK::V1::Domain::ClickToPayConfiguration] click_to_pay_configuration
           # @attr [true/false] device_fingerprint_enabled
           # @attr [Worldline::Connect::SDK::V1::Domain::PaymentProductDisplayHints] display_hints
           # @attr [Array<Worldline::Connect::SDK::V1::Domain::PaymentProductField>] fields
@@ -47,6 +50,8 @@ module Worldline
 
             attr_accessor :acquirer_country
 
+            attr_accessor :allows_click_to_pay
+
             attr_accessor :allows_installments
 
             attr_accessor :allows_recurring
@@ -58,6 +63,8 @@ module Worldline
             attr_accessor :auto_tokenized
 
             attr_accessor :can_be_iframed
+
+            attr_accessor :click_to_pay_configuration
 
             attr_accessor :device_fingerprint_enabled
 
@@ -98,12 +105,14 @@ module Worldline
               hash = super
               hash['accountsOnFile'] = @accounts_on_file.collect{|val| val.to_h} unless @accounts_on_file.nil?
               hash['acquirerCountry'] = @acquirer_country unless @acquirer_country.nil?
+              hash['allowsClickToPay'] = @allows_click_to_pay unless @allows_click_to_pay.nil?
               hash['allowsInstallments'] = @allows_installments unless @allows_installments.nil?
               hash['allowsRecurring'] = @allows_recurring unless @allows_recurring.nil?
               hash['allowsTokenization'] = @allows_tokenization unless @allows_tokenization.nil?
               hash['authenticationIndicator'] = @authentication_indicator.to_h unless @authentication_indicator.nil?
               hash['autoTokenized'] = @auto_tokenized unless @auto_tokenized.nil?
               hash['canBeIframed'] = @can_be_iframed unless @can_be_iframed.nil?
+              hash['clickToPayConfiguration'] = @click_to_pay_configuration.to_h unless @click_to_pay_configuration.nil?
               hash['deviceFingerprintEnabled'] = @device_fingerprint_enabled unless @device_fingerprint_enabled.nil?
               hash['displayHints'] = @display_hints.to_h unless @display_hints.nil?
               hash['fields'] = @fields.collect{|val| val.to_h} unless @fields.nil?
@@ -136,6 +145,9 @@ module Worldline
               if hash.has_key? 'acquirerCountry'
                 @acquirer_country = hash['acquirerCountry']
               end
+              if hash.has_key? 'allowsClickToPay'
+                @allows_click_to_pay = hash['allowsClickToPay']
+              end
               if hash.has_key? 'allowsInstallments'
                 @allows_installments = hash['allowsInstallments']
               end
@@ -154,6 +166,10 @@ module Worldline
               end
               if hash.has_key? 'canBeIframed'
                 @can_be_iframed = hash['canBeIframed']
+              end
+              if hash.has_key? 'clickToPayConfiguration'
+                raise TypeError, "value '%s' is not a Hash" % [hash['clickToPayConfiguration']] unless hash['clickToPayConfiguration'].is_a? Hash
+                @click_to_pay_configuration = Worldline::Connect::SDK::V1::Domain::ClickToPayConfiguration.new_from_hash(hash['clickToPayConfiguration'])
               end
               if hash.has_key? 'deviceFingerprintEnabled'
                 @device_fingerprint_enabled = hash['deviceFingerprintEnabled']

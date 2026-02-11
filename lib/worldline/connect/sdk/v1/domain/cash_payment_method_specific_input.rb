@@ -5,6 +5,8 @@
 require 'worldline/connect/sdk/v1/domain/abstract_cash_payment_method_specific_input'
 require 'worldline/connect/sdk/v1/domain/cash_payment_product1503_specific_input'
 require 'worldline/connect/sdk/v1/domain/cash_payment_product1504_specific_input'
+require 'worldline/connect/sdk/v1/domain/cash_payment_product1506_specific_input'
+require 'worldline/connect/sdk/v1/domain/cash_payment_product1508_specific_input'
 require 'worldline/connect/sdk/v1/domain/cash_payment_product1521_specific_input'
 require 'worldline/connect/sdk/v1/domain/cash_payment_product1522_specific_input'
 require 'worldline/connect/sdk/v1/domain/cash_payment_product1523_specific_input'
@@ -18,6 +20,8 @@ module Worldline
         module Domain
           # @attr [Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1503SpecificInput] payment_product1503_specific_input
           # @attr [Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1504SpecificInput] payment_product1504_specific_input
+          # @attr [Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1506SpecificInput] payment_product1506_specific_input
+          # @attr [Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1508SpecificInput] payment_product1508_specific_input
           # @attr [Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1521SpecificInput] payment_product1521_specific_input
           # @attr [Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1522SpecificInput] payment_product1522_specific_input
           # @attr [Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1523SpecificInput] payment_product1523_specific_input
@@ -29,6 +33,10 @@ module Worldline
             attr_accessor :payment_product1503_specific_input
 
             attr_accessor :payment_product1504_specific_input
+
+            attr_accessor :payment_product1506_specific_input
+
+            attr_accessor :payment_product1508_specific_input
 
             attr_accessor :payment_product1521_specific_input
 
@@ -45,6 +53,8 @@ module Worldline
               hash = super
               hash['paymentProduct1503SpecificInput'] = @payment_product1503_specific_input.to_h unless @payment_product1503_specific_input.nil?
               hash['paymentProduct1504SpecificInput'] = @payment_product1504_specific_input.to_h unless @payment_product1504_specific_input.nil?
+              hash['paymentProduct1506SpecificInput'] = @payment_product1506_specific_input.to_h unless @payment_product1506_specific_input.nil?
+              hash['paymentProduct1508SpecificInput'] = @payment_product1508_specific_input.to_h unless @payment_product1508_specific_input.nil?
               hash['paymentProduct1521SpecificInput'] = @payment_product1521_specific_input.to_h unless @payment_product1521_specific_input.nil?
               hash['paymentProduct1522SpecificInput'] = @payment_product1522_specific_input.to_h unless @payment_product1522_specific_input.nil?
               hash['paymentProduct1523SpecificInput'] = @payment_product1523_specific_input.to_h unless @payment_product1523_specific_input.nil?
@@ -62,6 +72,14 @@ module Worldline
               if hash.has_key? 'paymentProduct1504SpecificInput'
                 raise TypeError, "value '%s' is not a Hash" % [hash['paymentProduct1504SpecificInput']] unless hash['paymentProduct1504SpecificInput'].is_a? Hash
                 @payment_product1504_specific_input = Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1504SpecificInput.new_from_hash(hash['paymentProduct1504SpecificInput'])
+              end
+              if hash.has_key? 'paymentProduct1506SpecificInput'
+                raise TypeError, "value '%s' is not a Hash" % [hash['paymentProduct1506SpecificInput']] unless hash['paymentProduct1506SpecificInput'].is_a? Hash
+                @payment_product1506_specific_input = Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1506SpecificInput.new_from_hash(hash['paymentProduct1506SpecificInput'])
+              end
+              if hash.has_key? 'paymentProduct1508SpecificInput'
+                raise TypeError, "value '%s' is not a Hash" % [hash['paymentProduct1508SpecificInput']] unless hash['paymentProduct1508SpecificInput'].is_a? Hash
+                @payment_product1508_specific_input = Worldline::Connect::SDK::V1::Domain::CashPaymentProduct1508SpecificInput.new_from_hash(hash['paymentProduct1508SpecificInput'])
               end
               if hash.has_key? 'paymentProduct1521SpecificInput'
                 raise TypeError, "value '%s' is not a Hash" % [hash['paymentProduct1521SpecificInput']] unless hash['paymentProduct1521SpecificInput'].is_a? Hash

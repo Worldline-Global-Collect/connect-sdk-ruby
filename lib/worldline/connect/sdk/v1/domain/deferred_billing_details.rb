@@ -9,10 +9,13 @@ module Worldline
     module SDK
       module V1
         module Domain
+          # @attr [Integer] deferred_payment_amount
           # @attr [String] deferred_payment_date
           # @attr [String] free_cancellation_date
           # @attr [String] free_cancellation_date_time_zone
           class DeferredBillingDetails < Worldline::Connect::SDK::V1::Domain::BaseBillingDetails
+
+            attr_accessor :deferred_payment_amount
 
             attr_accessor :deferred_payment_date
 
@@ -23,6 +26,7 @@ module Worldline
             # @return (Hash)
             def to_h
               hash = super
+              hash['deferredPaymentAmount'] = @deferred_payment_amount unless @deferred_payment_amount.nil?
               hash['deferredPaymentDate'] = @deferred_payment_date unless @deferred_payment_date.nil?
               hash['freeCancellationDate'] = @free_cancellation_date unless @free_cancellation_date.nil?
               hash['freeCancellationDateTimeZone'] = @free_cancellation_date_time_zone unless @free_cancellation_date_time_zone.nil?
@@ -31,6 +35,9 @@ module Worldline
 
             def from_hash(hash)
               super
+              if hash.has_key? 'deferredPaymentAmount'
+                @deferred_payment_amount = hash['deferredPaymentAmount']
+              end
               if hash.has_key? 'deferredPaymentDate'
                 @deferred_payment_date = hash['deferredPaymentDate']
               end
