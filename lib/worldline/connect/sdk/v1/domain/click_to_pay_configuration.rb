@@ -5,15 +5,19 @@
 require 'worldline/connect/sdk/domain/data_object'
 require 'worldline/connect/sdk/v1/domain/click_to_pay_configuration_mastercard'
 require 'worldline/connect/sdk/v1/domain/click_to_pay_configuration_visa'
+require 'worldline/connect/sdk/v1/domain/click_to_pay_display_hints'
 
 module Worldline
   module Connect
     module SDK
       module V1
         module Domain
+          # @attr [Worldline::Connect::SDK::V1::Domain::ClickToPayDisplayHints] display_hints
           # @attr [Worldline::Connect::SDK::V1::Domain::ClickToPayConfigurationMastercard] mastercard
           # @attr [Worldline::Connect::SDK::V1::Domain::ClickToPayConfigurationVisa] visa
           class ClickToPayConfiguration < Worldline::Connect::SDK::Domain::DataObject
+
+            attr_accessor :display_hints
 
             attr_accessor :mastercard
 
@@ -22,6 +26,7 @@ module Worldline
             # @return (Hash)
             def to_h
               hash = super
+              hash['displayHints'] = @display_hints.to_h unless @display_hints.nil?
               hash['mastercard'] = @mastercard.to_h unless @mastercard.nil?
               hash['visa'] = @visa.to_h unless @visa.nil?
               hash
@@ -29,6 +34,10 @@ module Worldline
 
             def from_hash(hash)
               super
+              if hash.has_key? 'displayHints'
+                raise TypeError, "value '%s' is not a Hash" % [hash['displayHints']] unless hash['displayHints'].is_a? Hash
+                @display_hints = Worldline::Connect::SDK::V1::Domain::ClickToPayDisplayHints.new_from_hash(hash['displayHints'])
+              end
               if hash.has_key? 'mastercard'
                 raise TypeError, "value '%s' is not a Hash" % [hash['mastercard']] unless hash['mastercard'].is_a? Hash
                 @mastercard = Worldline::Connect::SDK::V1::Domain::ClickToPayConfigurationMastercard.new_from_hash(hash['mastercard'])

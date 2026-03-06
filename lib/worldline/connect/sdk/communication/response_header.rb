@@ -51,10 +51,8 @@ module Worldline
           # If this Response does not contain a header with the given name, return _nil_ instead
           def self.get_disposition_filename(headers)
             header_value = get_header_value(headers, "Content-Disposition")
-            unless header_value.nil?
-              if header_value =~ /(?:^|;)\s*filename\s*=\s*(.*?)\s*(?:;|$)i/
-                return trim_quotes($2)
-              end
+            if !header_value.nil? && header_value =~ /(?:^|;)\s*filename\s*=\s*(.*?)\s*(?:;|$)i/
+              return trim_quotes($2)
             end
 
             return nil
@@ -65,11 +63,9 @@ module Worldline
           # Trims the single or double quotes at the beginning and end of parameter _filename_ if they exist
           # If they don't exist, it returns the original _filename_ instead
           def trim_quotes(filename)
-            unless filename.length < 2
-              if (filename.chars.first == '\'' && filename.chars.last == '\"') ||
-                (filename.chars.first == '"' && filename.chars.last == '"')
-                return filename[1...-1]
-              end
+            if filename.length >= 2 &&
+               (filename.chars.first == '\'' && filename.chars.last == '\'') || (filename.chars.first == '"' && filename.chars.last == '"')
+              return filename[1...-1]
             end
             filename
           end
