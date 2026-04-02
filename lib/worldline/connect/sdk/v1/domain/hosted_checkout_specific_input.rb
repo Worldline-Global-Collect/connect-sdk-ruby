@@ -11,6 +11,7 @@ module Worldline
     module SDK
       module V1
         module Domain
+          # @attr [true/false] allow_click_to_pay
           # @attr [true/false] is_recurring
           # @attr [String] locale
           # @attr [Worldline::Connect::SDK::V1::Domain::PaymentProductFiltersHostedCheckout] payment_product_filters
@@ -22,6 +23,8 @@ module Worldline
           # @attr [true/false] validate_shopping_cart
           # @attr [String] variant
           class HostedCheckoutSpecificInput < Worldline::Connect::SDK::Domain::DataObject
+
+            attr_accessor :allow_click_to_pay
 
             attr_accessor :is_recurring
 
@@ -46,6 +49,7 @@ module Worldline
             # @return (Hash)
             def to_h
               hash = super
+              hash['allowClickToPay'] = @allow_click_to_pay unless @allow_click_to_pay.nil?
               hash['isRecurring'] = @is_recurring unless @is_recurring.nil?
               hash['locale'] = @locale unless @locale.nil?
               hash['paymentProductFilters'] = @payment_product_filters.to_h unless @payment_product_filters.nil?
@@ -61,6 +65,9 @@ module Worldline
 
             def from_hash(hash)
               super
+              if hash.has_key? 'allowClickToPay'
+                @allow_click_to_pay = hash['allowClickToPay']
+              end
               if hash.has_key? 'isRecurring'
                 @is_recurring = hash['isRecurring']
               end

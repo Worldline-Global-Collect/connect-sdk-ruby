@@ -4,6 +4,7 @@
 #
 require 'worldline/connect/sdk/v1/domain/abstract_card_payment_method_specific_input'
 require 'worldline/connect/sdk/v1/domain/card'
+require 'worldline/connect/sdk/v1/domain/click_to_pay_input'
 require 'worldline/connect/sdk/v1/domain/external_cardholder_authentication_data'
 require 'worldline/connect/sdk/v1/domain/scheme_token_data'
 require 'worldline/connect/sdk/v1/domain/three_d_secure'
@@ -14,6 +15,7 @@ module Worldline
       module V1
         module Domain
           # @attr [Worldline::Connect::SDK::V1::Domain::Card] card
+          # @attr [Worldline::Connect::SDK::V1::Domain::ClickToPayInput] click_to_pay
           # @attr [Worldline::Connect::SDK::V1::Domain::ExternalCardholderAuthenticationData] external_cardholder_authentication_data
           # @attr [true/false] is_recurring
           # @attr [String] merchant_initiated_reason_indicator
@@ -23,6 +25,8 @@ module Worldline
           class CardPaymentMethodSpecificInput < Worldline::Connect::SDK::V1::Domain::AbstractCardPaymentMethodSpecificInput
 
             attr_accessor :card
+
+            attr_accessor :click_to_pay
 
             # @deprecated Use threeDSecure.externalCardholderAuthenticationData instead
             attr_accessor :external_cardholder_authentication_data
@@ -42,6 +46,7 @@ module Worldline
             def to_h
               hash = super
               hash['card'] = @card.to_h unless @card.nil?
+              hash['clickToPay'] = @click_to_pay.to_h unless @click_to_pay.nil?
               hash['externalCardholderAuthenticationData'] = @external_cardholder_authentication_data.to_h unless @external_cardholder_authentication_data.nil?
               hash['isRecurring'] = @is_recurring unless @is_recurring.nil?
               hash['merchantInitiatedReasonIndicator'] = @merchant_initiated_reason_indicator unless @merchant_initiated_reason_indicator.nil?
@@ -56,6 +61,10 @@ module Worldline
               if hash.has_key? 'card'
                 raise TypeError, "value '%s' is not a Hash" % [hash['card']] unless hash['card'].is_a? Hash
                 @card = Worldline::Connect::SDK::V1::Domain::Card.new_from_hash(hash['card'])
+              end
+              if hash.has_key? 'clickToPay'
+                raise TypeError, "value '%s' is not a Hash" % [hash['clickToPay']] unless hash['clickToPay'].is_a? Hash
+                @click_to_pay = Worldline::Connect::SDK::V1::Domain::ClickToPayInput.new_from_hash(hash['clickToPay'])
               end
               if hash.has_key? 'externalCardholderAuthenticationData'
                 raise TypeError, "value '%s' is not a Hash" % [hash['externalCardholderAuthenticationData']] unless hash['externalCardholderAuthenticationData'].is_a? Hash

@@ -15,6 +15,7 @@ module Worldline
         module Domain
           # @attr [String] authorisation_code
           # @attr [Worldline::Connect::SDK::V1::Domain::CardEssentials] card
+          # @attr [true/false] click_to_pay_used
           # @attr [Worldline::Connect::SDK::V1::Domain::CardFraudResults] fraud_results
           # @attr [String] initial_scheme_transaction_id
           # @attr [Worldline::Connect::SDK::V1::Domain::NetworkTokenData] network_token_data
@@ -28,6 +29,8 @@ module Worldline
             attr_accessor :authorisation_code
 
             attr_accessor :card
+
+            attr_accessor :click_to_pay_used
 
             attr_accessor :fraud_results
 
@@ -50,6 +53,7 @@ module Worldline
               hash = super
               hash['authorisationCode'] = @authorisation_code unless @authorisation_code.nil?
               hash['card'] = @card.to_h unless @card.nil?
+              hash['clickToPayUsed'] = @click_to_pay_used unless @click_to_pay_used.nil?
               hash['fraudResults'] = @fraud_results.to_h unless @fraud_results.nil?
               hash['initialSchemeTransactionId'] = @initial_scheme_transaction_id unless @initial_scheme_transaction_id.nil?
               hash['networkTokenData'] = @network_token_data.to_h unless @network_token_data.nil?
@@ -69,6 +73,9 @@ module Worldline
               if hash.has_key? 'card'
                 raise TypeError, "value '%s' is not a Hash" % [hash['card']] unless hash['card'].is_a? Hash
                 @card = Worldline::Connect::SDK::V1::Domain::CardEssentials.new_from_hash(hash['card'])
+              end
+              if hash.has_key? 'clickToPayUsed'
+                @click_to_pay_used = hash['clickToPayUsed']
               end
               if hash.has_key? 'fraudResults'
                 raise TypeError, "value '%s' is not a Hash" % [hash['fraudResults']] unless hash['fraudResults'].is_a? Hash
