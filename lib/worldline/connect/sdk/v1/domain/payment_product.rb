@@ -21,6 +21,7 @@ module Worldline
           # @attr [String] acquirer_country
           # @attr [true/false] allows_click_to_pay
           # @attr [true/false] allows_installments
+          # @attr [true/false] allows_multiple_partial_captures
           # @attr [true/false] allows_recurring
           # @attr [true/false] allows_tokenization
           # @attr [Worldline::Connect::SDK::V1::Domain::AuthenticationIndicator] authentication_indicator
@@ -53,6 +54,8 @@ module Worldline
             attr_accessor :allows_click_to_pay
 
             attr_accessor :allows_installments
+
+            attr_accessor :allows_multiple_partial_captures
 
             attr_accessor :allows_recurring
 
@@ -107,6 +110,7 @@ module Worldline
               hash['acquirerCountry'] = @acquirer_country unless @acquirer_country.nil?
               hash['allowsClickToPay'] = @allows_click_to_pay unless @allows_click_to_pay.nil?
               hash['allowsInstallments'] = @allows_installments unless @allows_installments.nil?
+              hash['allowsMultiplePartialCaptures'] = @allows_multiple_partial_captures unless @allows_multiple_partial_captures.nil?
               hash['allowsRecurring'] = @allows_recurring unless @allows_recurring.nil?
               hash['allowsTokenization'] = @allows_tokenization unless @allows_tokenization.nil?
               hash['authenticationIndicator'] = @authentication_indicator.to_h unless @authentication_indicator.nil?
@@ -150,6 +154,9 @@ module Worldline
               end
               if hash.has_key? 'allowsInstallments'
                 @allows_installments = hash['allowsInstallments']
+              end
+              if hash.has_key? 'allowsMultiplePartialCaptures'
+                @allows_multiple_partial_captures = hash['allowsMultiplePartialCaptures']
               end
               if hash.has_key? 'allowsRecurring'
                 @allows_recurring = hash['allowsRecurring']
