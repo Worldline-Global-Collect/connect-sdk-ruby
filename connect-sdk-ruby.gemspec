@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name           = 'connect-sdk-ruby'
-  spec.version        = '4.7.0'
+  spec.version        = '5.0.0'
   spec.authors        = ['Worldline Global Collect']
   spec.email          = ['github.connect@worldline.com']
   spec.summary        = %q{SDK to communicate with the Worldline Global Collect platform using the Worldline Connect Server API}
@@ -21,10 +21,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'concurrent-ruby', '~>1.0'
 
   spec.add_development_dependency 'yard', '~> 0.9'
-  spec.add_development_dependency 'rspec', '~> 3.5'
-  spec.add_development_dependency 'webmock', '~> 2.1'
-  spec.add_development_dependency 'sinatra', '~> 2.1'
-  spec.add_development_dependency 'webrick', '~> 1.7'
-  spec.add_development_dependency 'rake', '~> 12.3', '>= 12.3.3'
+  spec.add_development_dependency 'rspec', '~> 3.13'
+  spec.add_development_dependency 'webmock', '~> 3.26'
+  spec.add_development_dependency 'sinatra', '~> 4.2'
+  spec.add_development_dependency 'webrick', '~> 1.9'
+  spec.add_development_dependency 'rake', '~> 13.4'
   # spec.metadata['yard.run'] = 'yri'  # compiles yard doc on install
 end

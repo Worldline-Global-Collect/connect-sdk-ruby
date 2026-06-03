@@ -5,7 +5,7 @@
 require 'worldline/connect/sdk/domain/data_object'
 require 'worldline/connect/sdk/v1/domain/capture_payment_order_additional_input'
 require 'worldline/connect/sdk/v1/domain/capture_payment_order_references'
-require 'worldline/connect/sdk/v1/domain/shipping'
+require 'worldline/connect/sdk/v1/domain/capture_payment_shipping'
 
 module Worldline
   module Connect
@@ -14,7 +14,7 @@ module Worldline
         module Domain
           # @attr [Worldline::Connect::SDK::V1::Domain::CapturePaymentOrderAdditionalInput] additional_input
           # @attr [Worldline::Connect::SDK::V1::Domain::CapturePaymentOrderReferences] references
-          # @attr [Worldline::Connect::SDK::V1::Domain::Shipping] shipping
+          # @attr [Worldline::Connect::SDK::V1::Domain::CapturePaymentShipping] shipping
           class CapturePaymentOrder < Worldline::Connect::SDK::Domain::DataObject
 
             attr_accessor :additional_input
@@ -44,7 +44,7 @@ module Worldline
               end
               if hash.has_key? 'shipping'
                 raise TypeError, "value '%s' is not a Hash" % [hash['shipping']] unless hash['shipping'].is_a? Hash
-                @shipping = Worldline::Connect::SDK::V1::Domain::Shipping.new_from_hash(hash['shipping'])
+                @shipping = Worldline::Connect::SDK::V1::Domain::CapturePaymentShipping.new_from_hash(hash['shipping'])
               end
             end
           end
