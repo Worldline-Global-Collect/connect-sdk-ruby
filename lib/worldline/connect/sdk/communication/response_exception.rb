@@ -15,12 +15,9 @@ module Worldline
             super('the Worldline Global Collect platform returned an error response')
             @status_code = status_code
             @headers = if headers.nil? or headers.empty?
-                         {}
+                         []
                        else
-                         headers.inject({}) do |hash, header|
-                           hash[header.name.downcase.to_sym] = header.dup.freeze
-                           hash
-                         end
+                         headers.map { |h| h.dup.freeze }
                        end.freeze
             @body = body
           end

@@ -303,7 +303,7 @@ describe 'DefaultConnectionLogging' do
     CLIENT.enable_logging(logger)
     response = CLIENT.v1.merchant('1234').tokens.delete('5678', nil)
 
-    expect(response).to_not be_nil
+    expect(response).to be_nil
 
     validate_request_and_response(logger.entries[0], logger.entries[1], 'deleteToken')
   end

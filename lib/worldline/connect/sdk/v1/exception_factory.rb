@@ -34,6 +34,7 @@ module Worldline
             return DeclinedRefundException.new(status_code, response_body, error_object) unless error_object.refund_result.nil?
             return create_exception_from_response_fields(status_code, response_body, error_object.error_id, error_object.errors, context)
           end
+          return create_exception_from_response_fields(status_code, response_body, nil, [], context) if error_object.nil?
           raise ArgumentError.new("unsupported error object type: " + error_object.class.name) unless error_object.is_a?(Worldline::Connect::SDK::V1::Domain::ErrorResponse)
           create_exception_from_response_fields(status_code, response_body, error_object.error_id, error_object.errors, context)
         end
