@@ -20,10 +20,12 @@ module Worldline
           # @attr [String] initial_scheme_transaction_id
           # @attr [Worldline::Connect::SDK::V1::Domain::NetworkTokenData] network_token_data
           # @attr [true/false] network_token_used
+          # @attr [String] original_transaction_link_id
           # @attr [String] payment_account_reference
           # @attr [String] scheme_transaction_id
           # @attr [Worldline::Connect::SDK::V1::Domain::ThreeDSecureResults] three_d_secure_results
           # @attr [String] token
+          # @attr [String] transaction_link_id
           class CardPaymentMethodSpecificOutput < Worldline::Connect::SDK::V1::Domain::AbstractPaymentMethodSpecificOutput
 
             attr_accessor :authorisation_code
@@ -40,6 +42,8 @@ module Worldline
 
             attr_accessor :network_token_used
 
+            attr_accessor :original_transaction_link_id
+
             attr_accessor :payment_account_reference
 
             attr_accessor :scheme_transaction_id
@@ -47,6 +51,8 @@ module Worldline
             attr_accessor :three_d_secure_results
 
             attr_accessor :token
+
+            attr_accessor :transaction_link_id
 
             # @return (Hash)
             def to_h
@@ -58,10 +64,12 @@ module Worldline
               hash['initialSchemeTransactionId'] = @initial_scheme_transaction_id unless @initial_scheme_transaction_id.nil?
               hash['networkTokenData'] = @network_token_data.to_h unless @network_token_data.nil?
               hash['networkTokenUsed'] = @network_token_used unless @network_token_used.nil?
+              hash['originalTransactionLinkId'] = @original_transaction_link_id unless @original_transaction_link_id.nil?
               hash['paymentAccountReference'] = @payment_account_reference unless @payment_account_reference.nil?
               hash['schemeTransactionId'] = @scheme_transaction_id unless @scheme_transaction_id.nil?
               hash['threeDSecureResults'] = @three_d_secure_results.to_h unless @three_d_secure_results.nil?
               hash['token'] = @token unless @token.nil?
+              hash['transactionLinkId'] = @transaction_link_id unless @transaction_link_id.nil?
               hash
             end
 
@@ -91,6 +99,9 @@ module Worldline
               if hash.has_key? 'networkTokenUsed'
                 @network_token_used = hash['networkTokenUsed']
               end
+              if hash.has_key? 'originalTransactionLinkId'
+                @original_transaction_link_id = hash['originalTransactionLinkId']
+              end
               if hash.has_key? 'paymentAccountReference'
                 @payment_account_reference = hash['paymentAccountReference']
               end
@@ -103,6 +114,9 @@ module Worldline
               end
               if hash.has_key? 'token'
                 @token = hash['token']
+              end
+              if hash.has_key? 'transactionLinkId'
+                @transaction_link_id = hash['transactionLinkId']
               end
             end
           end

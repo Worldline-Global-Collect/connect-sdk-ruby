@@ -16,10 +16,12 @@ module Worldline
           # @attr [Worldline::Connect::SDK::V1::Domain::CardFraudResults] fraud_results
           # @attr [String] initial_scheme_transaction_id
           # @attr [String] network
+          # @attr [String] original_transaction_link_id
           # @attr [Worldline::Connect::SDK::V1::Domain::MobilePaymentData] payment_data
           # @attr [String] scheme_transaction_id
           # @attr [Worldline::Connect::SDK::V1::Domain::ThreeDSecureResults] three_d_secure_results
           # @attr [String] token
+          # @attr [String] transaction_link_id
           class MobilePaymentMethodSpecificOutput < Worldline::Connect::SDK::V1::Domain::AbstractPaymentMethodSpecificOutput
 
             attr_accessor :authorisation_code
@@ -30,6 +32,8 @@ module Worldline
 
             attr_accessor :network
 
+            attr_accessor :original_transaction_link_id
+
             attr_accessor :payment_data
 
             attr_accessor :scheme_transaction_id
@@ -38,6 +42,8 @@ module Worldline
 
             attr_accessor :token
 
+            attr_accessor :transaction_link_id
+
             # @return (Hash)
             def to_h
               hash = super
@@ -45,10 +51,12 @@ module Worldline
               hash['fraudResults'] = @fraud_results.to_h unless @fraud_results.nil?
               hash['initialSchemeTransactionId'] = @initial_scheme_transaction_id unless @initial_scheme_transaction_id.nil?
               hash['network'] = @network unless @network.nil?
+              hash['originalTransactionLinkId'] = @original_transaction_link_id unless @original_transaction_link_id.nil?
               hash['paymentData'] = @payment_data.to_h unless @payment_data.nil?
               hash['schemeTransactionId'] = @scheme_transaction_id unless @scheme_transaction_id.nil?
               hash['threeDSecureResults'] = @three_d_secure_results.to_h unless @three_d_secure_results.nil?
               hash['token'] = @token unless @token.nil?
+              hash['transactionLinkId'] = @transaction_link_id unless @transaction_link_id.nil?
               hash
             end
 
@@ -67,6 +75,9 @@ module Worldline
               if hash.has_key? 'network'
                 @network = hash['network']
               end
+              if hash.has_key? 'originalTransactionLinkId'
+                @original_transaction_link_id = hash['originalTransactionLinkId']
+              end
               if hash.has_key? 'paymentData'
                 raise TypeError, "value '%s' is not a Hash" % [hash['paymentData']] unless hash['paymentData'].is_a? Hash
                 @payment_data = Worldline::Connect::SDK::V1::Domain::MobilePaymentData.new_from_hash(hash['paymentData'])
@@ -80,6 +91,9 @@ module Worldline
               end
               if hash.has_key? 'token'
                 @token = hash['token']
+              end
+              if hash.has_key? 'transactionLinkId'
+                @transaction_link_id = hash['transactionLinkId']
               end
             end
           end

@@ -14,6 +14,7 @@ module Worldline
           # @attr [String] authorization_mode
           # @attr [String] customer_reference
           # @attr [String] initial_scheme_transaction_id
+          # @attr [String] original_transaction_link_id
           # @attr [Worldline::Connect::SDK::V1::Domain::CardRecurrenceDetails] recurring
           # @attr [String] recurring_payment_sequence_indicator
           # @attr [true/false] requires_approval
@@ -34,6 +35,8 @@ module Worldline
             attr_accessor :customer_reference
 
             attr_accessor :initial_scheme_transaction_id
+
+            attr_accessor :original_transaction_link_id
 
             attr_accessor :recurring
 
@@ -67,6 +70,7 @@ module Worldline
               hash['authorizationMode'] = @authorization_mode unless @authorization_mode.nil?
               hash['customerReference'] = @customer_reference unless @customer_reference.nil?
               hash['initialSchemeTransactionId'] = @initial_scheme_transaction_id unless @initial_scheme_transaction_id.nil?
+              hash['originalTransactionLinkId'] = @original_transaction_link_id unless @original_transaction_link_id.nil?
               hash['recurring'] = @recurring.to_h unless @recurring.nil?
               hash['recurringPaymentSequenceIndicator'] = @recurring_payment_sequence_indicator unless @recurring_payment_sequence_indicator.nil?
               hash['requiresApproval'] = @requires_approval unless @requires_approval.nil?
@@ -94,6 +98,9 @@ module Worldline
               end
               if hash.has_key? 'initialSchemeTransactionId'
                 @initial_scheme_transaction_id = hash['initialSchemeTransactionId']
+              end
+              if hash.has_key? 'originalTransactionLinkId'
+                @original_transaction_link_id = hash['originalTransactionLinkId']
               end
               if hash.has_key? 'recurring'
                 raise TypeError, "value '%s' is not a Hash" % [hash['recurring']] unless hash['recurring'].is_a? Hash
