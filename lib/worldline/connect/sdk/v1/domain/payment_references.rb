@@ -10,6 +10,7 @@ module Worldline
       module V1
         module Domain
           # @attr [String] merchant_capture_reference
+          # @attr [String] merchant_customer_id
           # @attr [Integer] merchant_order_id
           # @attr [String] merchant_reference
           # @attr [String] payment_reference
@@ -20,6 +21,8 @@ module Worldline
           class PaymentReferences < Worldline::Connect::SDK::Domain::DataObject
 
             attr_accessor :merchant_capture_reference
+
+            attr_accessor :merchant_customer_id
 
             attr_accessor :merchant_order_id
 
@@ -39,6 +42,7 @@ module Worldline
             def to_h
               hash = super
               hash['merchantCaptureReference'] = @merchant_capture_reference unless @merchant_capture_reference.nil?
+              hash['merchantCustomerId'] = @merchant_customer_id unless @merchant_customer_id.nil?
               hash['merchantOrderId'] = @merchant_order_id unless @merchant_order_id.nil?
               hash['merchantReference'] = @merchant_reference unless @merchant_reference.nil?
               hash['paymentReference'] = @payment_reference unless @payment_reference.nil?
@@ -53,6 +57,9 @@ module Worldline
               super
               if hash.has_key? 'merchantCaptureReference'
                 @merchant_capture_reference = hash['merchantCaptureReference']
+              end
+              if hash.has_key? 'merchantCustomerId'
+                @merchant_customer_id = hash['merchantCustomerId']
               end
               if hash.has_key? 'merchantOrderId'
                 @merchant_order_id = hash['merchantOrderId']
